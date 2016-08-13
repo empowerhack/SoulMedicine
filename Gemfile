@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Heroku Deploy
 gem 'rails_12factor', group: :production
-gem "passenger"
+gem 'puma'
 
 #### SoulMedicine specific gems ####
 gem 'twilio-ruby'
@@ -24,9 +24,7 @@ gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
 #### End of SoulMedicine specific gems ####
 
-#### Gems for Windows ###
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-#### End of Gems for Windows ###
+
 
 # Security
 gem 'bcrypt', '~> 3.1.7'
@@ -41,6 +39,4 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-
-
 end
