@@ -19,4 +19,4 @@ TODO/Updates
 * Run "rake db:seed"
 * Run your server and you should be good to go!
 
-= More docs to come-
+= More docs to come
