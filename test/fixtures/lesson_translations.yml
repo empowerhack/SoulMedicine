@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lesson_id: 
+  language_id: 
+  translation: MyText
+  is_approved: false
+
+two:
+  lesson_id: 
+  language_id: 
+  translation: MyText
+  is_approved: false

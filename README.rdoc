@@ -1,0 +1,22 @@
+== README
+
+=== Soul Medicine Docs
+
+TODO/Updates
+    Fix routes - Currently work but not RESTful and ugly...Needs to be fixed
+    Sanitize mobile number. Currently only tested with UK number. Could break if first digit is not 0
+    Recent changes - Pin is generated via UserModel on first save; Mobile phone number is validated to
+     be unique; Pin verfification page (pin/verfication) is working and verifies.
+
+* Download code
+* cd into "SoulMedicine/config" and run "cp secrets-example.yml secrets.yml && cp database-example.yml database.yml"
+* Delete "secrets-example.yml" and "database-example.yml"
+* Fill in the api credentials and twilio phone number (from Twilio) in "secrets.yml"
+* Fill in your mysql database details, including your username, password and socket location in "database.yml"
+* Run "bundle install"
+* Run "rake db:create"
+* Run "rake db:migrate"
+* Run "rake db:seed"
+* Run your server and you should be good to go!
+
+= More docs to come-

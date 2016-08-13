@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row pin">
+		<div class="col-xs-12 col-lg-6 col-lg-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="panel-background">Get Started By Entering Your Pin!</div>
+					<%= form_tag(action: :verify, role: 'form')%>
+						<div class="row">
+							<div class="form-group col-xs-10 col-xs-offset-1">
+								<label for="email">Mobile Number:</label>
+								<%= text_field(@mobile_num, :mobile_number, placeholder: "Mobile Number", class: "form-control input-normal") %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-xs-10 col-xs-offset-1">
+								<label for="pwd">Pin</label>
+								<%= text_field(@pin, :pin, placeholder: "Pin", class: "form-control input-normal") %>
+							</div>
+						</div>
+					<div class="row">
+						<div class="col-xs-10 col-xs-offset-1">
+						<%= submit_tag("Submit", class: "btn btn-primary btn-md btn-block") %>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
