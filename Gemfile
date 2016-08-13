@@ -11,6 +11,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+#Heroku Deploy
+gem 'rails_12factor', group: :production
+gem "passenger"
+
 #### SoulMedicine specific gems ####
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
@@ -37,5 +41,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-end
 
+
+end
+ruby "2.3.1"
