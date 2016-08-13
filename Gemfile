@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Heroku Deploy
 gem 'rails_12factor', group: :production
-gem 'puma'
+gem 'passenger'
 
 #### SoulMedicine specific gems ####
 gem 'twilio-ruby'
