@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
- 
+
 #Heroku Deploy
 gem 'rails_12factor', group: :production
 gem 'puma'
