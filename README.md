@@ -4,7 +4,7 @@ Soul Medicine is a free micro learning, SMS based service helping refugees. It i
 
 ## Contribute to the project
 
-Send an email to `hello<AT>soulmedicine.io` to learn more about how you can contribute to the project. We are constantly looking for more developers, project managers, content producers, and content translators. If you wish, you can also contribute monetarily, which helps support the server costs of running the server and continued development.
+Send an email to `hello<AT>soulmedicine.io` to learn more about how you can contribute to the project. We are constantly looking for more developers, project managers, content producers, and content translators. If you wish, you can also contribute monetarily, which helps support the costs of running the server and continued development.
 
 ## Have Ideas or Run into Issues?
 
