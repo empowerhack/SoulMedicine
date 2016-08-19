@@ -3,10 +3,13 @@ class User < ActiveRecord::Base
 	belongs_to :country
   belongs_to :language
   has_one :user_preference
+  has_many :user_courses
+  has_many :courses, :through => :user_courses
   has_many :lesson_completions
   has_many :completed_lessons, :through => :lesson_completions, :source => :lesson
 
   accepts_nested_attributes_for :user_preference
+  accepts_nested_attributes_for :user_courses, :allow_destroy => true
   
   # has_settings do |t|
 	 #  t.key :religion

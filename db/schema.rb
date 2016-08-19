@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519103106) do
+ActiveRecord::Schema.define(version: 20160817165935) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -130,6 +130,17 @@ ActiveRecord::Schema.define(version: 20160519103106) do
 
   add_index "subject_matters", ["course_id"], name: "index_subject_matters_on_course_id", using: :btree
 
+  create_table "user_courses", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "course_id",   limit: 4
+    t.boolean  "is_complete",           default: false, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id", using: :btree
+  add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id", using: :btree
+
   create_table "user_preferences", force: :cascade do |t|
     t.integer  "user_id",                 limit: 4,                   null: false
     t.integer  "gender_id",               limit: 4,   default: 3,     null: false
@@ -175,4 +186,6 @@ ActiveRecord::Schema.define(version: 20160519103106) do
   add_foreign_key "lesson_completions", "users"
   add_foreign_key "lessons", "subject_matters"
   add_foreign_key "subject_matters", "courses"
+  add_foreign_key "user_courses", "courses"
+  add_foreign_key "user_courses", "users"
 end
