@@ -18,6 +18,7 @@ gem 'passenger'
 #### SoulMedicine specific gems ####
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
+gem 'active_admin_theme'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
