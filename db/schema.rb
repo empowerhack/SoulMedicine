@@ -143,15 +143,15 @@ ActiveRecord::Schema.define(version: 20160817165935) do
 
   create_table "user_preferences", force: :cascade do |t|
     t.integer  "user_id",                 limit: 4,                   null: false
-    t.integer  "gender_id",               limit: 4,   default: 3,     null: false
-    t.integer  "native_language_id",      limit: 4,                   null: false
+    t.integer  "gender_id",               limit: 4,   default: 3
+    t.integer  "native_language_id",      limit: 4
     t.integer  "other_language_one_id",   limit: 4
     t.integer  "other_language_two_id",   limit: 4
-    t.integer  "origin_country_id",       limit: 4,                   null: false
+    t.integer  "origin_country_id",       limit: 4
     t.integer  "country_of_residence_id", limit: 4
     t.boolean  "consent",                             default: false, null: false
     t.date     "age"
-    t.integer  "message_service_one_id",  limit: 4,   default: 1,     null: false
+    t.integer  "message_service_one_id",  limit: 4,   default: 1
     t.integer  "message_service_two_id",  limit: 4
     t.string   "first_name",              limit: 255
     t.string   "last_name",               limit: 255

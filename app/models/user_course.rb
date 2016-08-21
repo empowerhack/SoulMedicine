@@ -4,7 +4,4 @@ class UserCourse < ActiveRecord::Base
     belongs_to :course
     belongs_to :user
 
-    def course_name
-        "hello"
-    end
 end
