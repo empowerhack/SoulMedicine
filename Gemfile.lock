@@ -82,6 +82,9 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    crono (1.0.3)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
     debug_inspector (0.0.2)
     devise (4.1.0)
       bcrypt (~> 3.0)
@@ -241,6 +244,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   cancancan (~> 1.10)
+  crono
   devise
   dotenv-rails
   econfig
