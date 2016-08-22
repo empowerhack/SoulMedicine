@@ -19,7 +19,10 @@ default: &default
 
 development:
   <<: *default
-  database: SoulMedicine_development
+  database: <%=ENV['SOULMEDICINE_DATABASE_NAME']%>
+  username: <%=ENV['SOULMEDICINE_DATABASE_USER']%>
+  password: <%=ENV['SOULMEDICINE_DATABASE_PASSWORD']%>
+  host: <%=ENV['SOULMEDICINE_DATABASE_HOST']%>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

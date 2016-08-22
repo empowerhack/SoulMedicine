@@ -2,15 +2,15 @@ class CreateUserPreferences < ActiveRecord::Migration
   def change
     create_table :user_preferences do |t|
       t.references :user, null: false
-      t.references :gender, null: false , default: 3
-      t.references :native_language, null: false
+      t.references :gender , default: 3
+      t.references :native_language
       t.references :other_language_one
       t.references :other_language_two
-      t.references :origin_country, null: false
+      t.references :origin_country
       t.references :country_of_residence
       t.boolean :consent, null: false, default: false
       t.date :age
-      t.references :message_service_one, null: false, default: 1
+      t.references :message_service_one, default: 1
       t.references :message_service_two
       t.string :first_name
       t.string :last_name

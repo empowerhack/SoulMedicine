@@ -26,7 +26,50 @@ ActiveAdmin.register Lesson do
     end
     
     remove_filter :lesson_translation
+
+    show do
+        columns do
+            column max_width: "35%" do
+                panel "Lesson" do
+                    h3 "Course: #{lesson.subject_matter.course.name}"
+                    h3 "Subject Matter: #{lesson.subject_matter.name}"
+                    h3 "Lesson Name: #{lesson.name}"
+                end
+            end
+            column max_width: "65%" do
+                panel "Translations" do
+                    table_for lesson.lesson_translation do
+                        column "Language" do |lt|
+                            lt.language.name
+                        end
+                        column "Translation" do |lt|
+                            raw(lt.translation)
+                        end
+                        column "Approved" do |lt|
+                            status_tag lt.is_approved
+                        end
+                    end
+                end
+            end
+        end
+    end
     
+    form do |f|
+        f.semantic_errors *f.object.errors.keys
+        tabs do
+            tab "Lesson Details" do
+                f.inputs
+            end
+            if !f.object.new_record?
+                tab "Translations" do
+                    f.has_many :lesson_translation, new_record: false do |lt|
+                        lt.inputs
+                    end
+                end
+            end
+        end
+        f.actions
+    end
 
 
 end
