@@ -6,11 +6,13 @@ class Lesson < ActiveRecord::Base
   has_many :completed_users, :through => :lesson_completions, :source => :user
   
   validates_numericality_of :order
+
+  accepts_nested_attributes_for :lesson_translation, :allow_destroy => true
     
   after_create :load_translations
   
   def load_translations
-      langs = Language.where :is_active => true
+      langs = Language.all
       langs.each do |l|
           LessonTranslation.create(lesson_id: self.id, language_id: l.id, translation: " ")
       end
