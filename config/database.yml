@@ -52,6 +52,3 @@ test:
 #
 production:
   <<: *default
-  database: SoulMedicine_production
-  username: SoulMedicine
-  password: <%= ENV['SOULMEDICINE_DATABASE_PASSWORD'] %>
