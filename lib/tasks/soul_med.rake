@@ -4,4 +4,9 @@ namespace :soul_med do
     TestWorker.perform_async(args.name)
   end
 
+  desc "Send messages to users"
+  task :send_sms, [:timeOfDay] => :environment do |task, args|
+    SendsmsWorker.perform_async(args.timeOfDay)
+  end
+
 end
