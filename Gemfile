@@ -16,12 +16,15 @@ gem 'rails_12factor', group: :production
 gem 'passenger'
 
 #### SoulMedicine specific gems ####
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
+gem 'active_admin_theme'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
+gem 'sidekiq'
 #### End of SoulMedicine specific gems ####
 
 

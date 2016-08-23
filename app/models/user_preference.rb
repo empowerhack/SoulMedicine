@@ -1,5 +1,5 @@
 class UserPreference < ActiveRecord::Base
-	has_secure_password
+	# has_secure_password
 
 	belongs_to :user
 	belongs_to :gender

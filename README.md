@@ -14,10 +14,8 @@ Create a GitHub issue [here](https://github.com/empowerhack/SoulMedicine/issues)
 
 1. Clone this repository `git clone git@github.com:empowerhack/SoulMedicine.git`
 1. Navigate to the cloned repository `cd SoulMedicine`
-1. Copy the secrets file and the database configuration files
- 1. `cp config\secrets-example.yml config\secrets.yml`
- 1. `cp config\database-example.yml config\database.yml`
-1. Fill in the necessary information in these files _(open an issue here if you need help)_
+1. Copy the environment file  `cp .env.sample .env`
+ 1. Fill in the necessary information in this file _(open an issue here if you need help)_
 1. Run `bundle install`
 1. Run `rake db:create`
 1. Run `rake db:migrate`

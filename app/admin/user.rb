@@ -4,18 +4,30 @@ ActiveAdmin.register User do
     
     form do |f|
         f.semantic_errors *f.object.errors.keys
-        f.inputs "User Details" do
-            f.input :mobile_number
-            f.input :country
-            f.input :language
+        tabs do
+            tab "User Details" do
+                f.inputs do
+                    f.input :mobile_number
+                    f.input :country
+                    f.input :language
+                end
+            end
             if !f.object.new_record?
-                f.input :courses, :as => :check_boxes
+                tab "User Courses" do
+                    f.input :courses, :as => :check_boxes
+                end
+                tab "User Preferences" do
+                    f.inputs do
+                        f.has_many :user_preference, new_record: false do |p|
+                            p.inputs
+                        end
+                    end
+                end
             end
         end
+        
 
-        # f.inputs "User Preferences", for: [:user_preference, f.object.user_preference || UserPreference.new] do |p|
-        #     p.inputs
-        # end
+        
         
         f.actions
         
