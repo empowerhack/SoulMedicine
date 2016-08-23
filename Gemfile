@@ -24,7 +24,7 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
-gem 'crono'
+gem 'sidekiq'
 #### End of SoulMedicine specific gems ####
 
 

@@ -9,6 +9,7 @@ Rails.application.configure do
   Dotenv::Railtie.load
   
   config.cache_classes = false
+Dotenv::Railtie.load
 
   # Do not eager load code on boot.
   config.eager_load = false
