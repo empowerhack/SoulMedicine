@@ -3,6 +3,7 @@ ActiveAdmin.register SubjectMatter do
     menu false
     
     permit_params :name, :description, :order, :is_active, :course_id
+    permit_params lesson_attributes: [:_destroy, :id, :name, :order, :is_approved]
     
     remove_filter :lesson
     
@@ -12,12 +13,12 @@ ActiveAdmin.register SubjectMatter do
         end
     end
     
-    sidebar "Course Material", only: [:show, :edit] do
-        ul do
-            li link_to "Courses", admin_courses_path(q: { id_eq: subject_matter.course_id})
-            li link_to "Lessons", admin_lessons_path(q: { subject_matter_id_eq: subject_matter.id})
-        end
-    end
+    # sidebar "Course Material", only: [:show, :edit] do
+    #     ul do
+    #         li link_to "Courses", admin_courses_path(q: { id_eq: subject_matter.course_id})
+    #         li link_to "Lessons", admin_lessons_path(q: { subject_matter_id_eq: subject_matter.id})
+    #     end
+    # end
     
     index do
         selectable_column
@@ -55,6 +56,25 @@ ActiveAdmin.register SubjectMatter do
                end
            end
         end
+    end
+    
+    form do |f|
+        f.semantic_errors *f.object.errors.keys
+        tabs do
+            tab "Subject Details" do
+                f.inputs
+            end
+            if !f.object.new_record?
+                tab "Lessons" do
+                    f.has_many :lesson, heading: false, allow_destroy: true, new_record: true do |lt|
+                        lt.input :name
+                        lt.input :order
+                        lt.input :is_approved
+                    end
+                end
+            end
+        end
+        f.actions
     end
 
 

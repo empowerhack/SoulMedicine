@@ -48,10 +48,12 @@ ActiveAdmin.register Lesson do
                         end
                         column "Translation" do |lt|
                             raw(lt.translation)
-                            link_to "Edit", admin_lesson_translation_path(lt)
                         end
                         column "Approved" do |lt|
                             status_tag lt.is_approved
+                        end
+                        column do |lt|
+                            link_to "Edit", edit_admin_lesson_translation_path(lt)
                         end
                     end
                 end
