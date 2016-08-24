@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   after_create :load_user_extras
   
   def load_user_extras
-    UserPreference.create(user_id: self.id)
+    # UserPreference.create(user_id: self.id)
     courses = Course.where :is_active => true
     courses.each do |c|
       UserCourse.create(user_id: self.id, course_id: c.id, is_complete: false)
