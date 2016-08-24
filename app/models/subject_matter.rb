@@ -4,4 +4,9 @@ class SubjectMatter < ActiveRecord::Base
   # has_many :lesson_translation, :through => :lesson
   
   validates_numericality_of :order
+	
+	def to_s
+		name
+	end
+	
 end

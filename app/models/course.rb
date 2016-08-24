@@ -5,4 +5,6 @@ class Course < ActiveRecord::Base
   has_many :user_courses
 
   accepts_nested_attributes_for :user_courses
+  accepts_nested_attributes_for :subject_matters, :allow_destroy => true
+  
 end
