@@ -8,7 +8,7 @@ ActiveAdmin.register SubjectMatter do
     
     controller do
         def scoped_collection
-            super.includes :course, :lessons
+            super.includes :course, :lesson
         end
     end
     
