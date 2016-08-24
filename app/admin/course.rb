@@ -35,12 +35,12 @@ ActiveAdmin.register Course do
         columns do
             column max_width: "35%" do
                 panel course.name do
-                    text_node course.description
-                    hr
-                    text_node "Order: #{course.order}"
-                    hr
-                    h5 "Active?"
-                    status_tag course.is_active
+                    attributes_table_for course do
+                        row :name
+                        row :description
+                        row :order
+                        row :is_active
+                    end
                 end
             end
             column max_width: "65%" do
