@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825110437) do
+ActiveRecord::Schema.define(version: 20160825114232) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -174,11 +174,11 @@ ActiveRecord::Schema.define(version: 20160825110437) do
   create_table "users", force: :cascade do |t|
     t.integer  "mobile_number", limit: 8
     t.string   "pin",           limit: 255
-    t.boolean  "verified"
+    t.boolean  "verified",                  default: false
     t.integer  "country_id",    limit: 4
     t.integer  "language_id",   limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "users", ["country_id", "language_id"], name: "index_users_on_country_id_and_language_id", using: :btree

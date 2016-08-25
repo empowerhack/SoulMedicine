@@ -15,4 +15,10 @@ Rails.application.routes.draw do
     get '/logout' => 'sessions#destroy'
     match ':controller(/:action(/:id))', :via => [:get, :post, :patch]
   end
+  
+  require 'sidekiq/web'
+  authenticate :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+  
 end
