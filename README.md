@@ -10,26 +10,17 @@ Send an email to `hello<AT>soulmedicine.io` to learn more about how you can cont
 
 Create a GitHub issue [here](https://github.com/empowerhack/SoulMedicine/issues) and let us know!
 
-## Local development
+## Documentation
 
-### Requirements
+1. **User Guide**
+  1. [Signing Up](docs/SigningUp.md)
+  2. [Verification Process](docs/Verification.md)
+  3. [Editing Preferences](docs/UserPreference.md)
+  4. [Changing Courses](docs/ChangingCourse.md)
+  5. [Providing Feedback](docs/Feedback.md)
 
-* Ruby 2.3.1
-* Rails 4.2.4
-* Redis Server
-* MySQL Server
 
-### Build Steps
-
-1. Clone this repository `git clone git@github.com:empowerhack/SoulMedicine.git`
-1. Navigate to the cloned repository `cd SoulMedicine`
-1. Copy the environment file  `cp .env.sample .env`
- 1. Fill in the necessary information in this file _(open an issue here if you need help)_
-1. Run `bundle install`
-1. Run `rake db:create`
-1. Run `rake db:migrate`
-1. Run `rake db:seed`
-1. Run `rails s` to start the local server
-1. In a seperate terminal, run `bundle exec sidekiq` to run the background processes
-1. You should see the site available at `localhost:3000` and the admin section at `localhost:3000/admin`
-1. You can login to the admin site by using `admin@example.com / password`
+1. **Development Guide**
+  1. [Local Development](docs/LocalDevelopment.md)
+  2. [Running Tests](docs/RunningTests.md)
+  3. [Environment Variables](docs/EnvVariables.md)
