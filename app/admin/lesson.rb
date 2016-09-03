@@ -31,22 +31,29 @@ ActiveAdmin.register Lesson do
         columns do
             column max_width: "35%" do
                 panel "Lesson" do
-                    h3 "Course: #{lesson.subject_matter.course.name}"
-                    h3 "Subject Matter: #{lesson.subject_matter.name}"
-                    h3 "Lesson Name: #{lesson.name}"
+                    attributes_table_for lesson do
+                        row :name
+                        row :description
+                        row :order
+                        row('Course') { |l| link_to l.subject_matter.course.name, admin_course_path(l.subject_matter.course) }
+                        row('Subject Matter') { |l| link_to l.subject_matter.name, admin_subject_matter_path(l.subject_matter) }
+                    end
                 end
             end
             column max_width: "65%" do
                 panel "Translations" do
                     table_for lesson.lesson_translation do
                         column "Language" do |lt|
-                            lt.language.name
+                            link_to lt.language.name, admin_lesson_translation_path(lt)
                         end
                         column "Translation" do |lt|
                             raw(lt.translation)
                         end
                         column "Approved" do |lt|
                             status_tag lt.is_approved
+                        end
+                        column do |lt|
+                            link_to "Edit", edit_admin_lesson_translation_path(lt)
                         end
                     end
                 end

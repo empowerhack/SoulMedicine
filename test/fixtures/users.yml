@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  mobile_number: 1
+  mobile_number: 1234567890
+  pin: 12345
+  verified: true
+  country_id: 2
+  language_id: 1
 
 two:
-  mobile_number: 1
+  mobile_number: 9876543210
+  pin: 98765
+  verified: false
+  country_id: 1
+  language_id: 1
+  

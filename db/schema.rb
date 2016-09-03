@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822141328) do
+ActiveRecord::Schema.define(version: 20160825114232) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -142,14 +142,14 @@ ActiveRecord::Schema.define(version: 20160822141328) do
   add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id", using: :btree
 
   create_table "user_preferences", force: :cascade do |t|
-    t.integer  "user_id",                 limit: 4,                   null: false
+    t.integer  "user_id",                 limit: 4,                       null: false
     t.integer  "gender_id",               limit: 4,   default: 3
     t.integer  "native_language_id",      limit: 4
     t.integer  "other_language_one_id",   limit: 4
     t.integer  "other_language_two_id",   limit: 4
     t.integer  "origin_country_id",       limit: 4
     t.integer  "country_of_residence_id", limit: 4
-    t.boolean  "consent",                             default: false, null: false
+    t.boolean  "consent",                             default: false,     null: false
     t.date     "age"
     t.integer  "message_service_one_id",  limit: 4,   default: 1
     t.integer  "message_service_two_id",  limit: 4
@@ -157,8 +157,9 @@ ActiveRecord::Schema.define(version: 20160822141328) do
     t.string   "last_name",               limit: 255
     t.string   "email",                   limit: 255
     t.string   "password_digest",         limit: 255
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "delivery_time",           limit: 255, default: "morning"
   end
 
   add_index "user_preferences", ["country_of_residence_id"], name: "index_user_preferences_on_country_of_residence_id", using: :btree
@@ -173,11 +174,11 @@ ActiveRecord::Schema.define(version: 20160822141328) do
   create_table "users", force: :cascade do |t|
     t.integer  "mobile_number", limit: 8
     t.string   "pin",           limit: 255
-    t.boolean  "verified"
+    t.boolean  "verified",                  default: false
     t.integer  "country_id",    limit: 4
     t.integer  "language_id",   limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "users", ["country_id", "language_id"], name: "index_users_on_country_id_and_language_id", using: :btree

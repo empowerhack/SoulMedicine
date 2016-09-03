@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	belongs_to :country
   belongs_to :language
   has_one :user_preference
-  has_many :user_courses
+  has_many :user_courses, :dependent => :destroy
   has_many :courses, :through => :user_courses
   has_many :lesson_completions
   has_many :completed_lessons, :through => :lesson_completions, :source => :lesson
@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
   after_create :load_user_extras
   
   def load_user_extras
-    UserPreference.create(user_id: self.id)
+    UserPreference.create(
+      user_id: self.id
+    )
     courses = Course.where :is_active => true
     courses.each do |c|
       UserCourse.create(user_id: self.id, course_id: c.id, is_complete: false)
