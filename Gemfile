@@ -19,11 +19,12 @@ gem 'passenger'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
-gem 'active_admin_theme'
+gem 'sprockets_better_errors'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
+gem 'active_admin_theme'
 gem 'sidekiq'
 gem 'sinatra', :require => false
 #### End of SoulMedicine specific gems ####
