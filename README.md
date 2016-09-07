@@ -3,6 +3,7 @@
 Soul Medicine is a free micro learning, SMS based service helping refugees. It is a project that is built in collaboration with Empowerhack and Chayn. Whilst still in development, this repository will change drastically. Feel free to help out by reaching us at `hello<At>soulmedicine.io`
 
 [![Build Status](https://travis-ci.org/empowerhack/SoulMedicine.svg?branch=fahadiqbal1-development)](https://travis-ci.org/empowerhack/SoulMedicine)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=soulmedicine-fi&style=flat)](https://soulmedicine-fi.herokuapp.com/)
 
 ## Contribute to the project
 
