@@ -21,6 +21,8 @@ class Course < ActiveRecord::Base
   validates_presence_of :name, message: "can't be blank"
   validates_presence_of :description, message: "can't be blank"
   validates_presence_of :order, message: "can't be blank"
+  validates_uniqueness_of :name, on: :create, message: "already exists"
+  validates_uniqueness_of :order, on: :create, message: "must be unique"
   
   
 end
