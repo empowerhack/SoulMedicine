@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   before_validation :create_pin
 
-  validates_uniqueness_of :mobile_number
+  validates_uniqueness_of :mobile_number, :scope => :country_id, on: :create, message: "must be unique"
   validates_presence_of :country_id, :mobile_number, :language_id
 
   after_create :load_user_extras

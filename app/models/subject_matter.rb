@@ -14,7 +14,7 @@ class SubjectMatter < ActiveRecord::Base
   validates_presence_of :order, message: "can't be blank"
   validates_presence_of :is_active, message: "can't be blank"
   validates_presence_of :course_id, message: "can't be blank"
-  validates_uniqueness_of [:course_id, :name], on: :create, message: "and Name combo already exists"
+  validates_uniqueness_of [:name], :scope => :course_id, on: :create, message: "and course combo already exists"
   validates_numericality_of :order
 	
 	def to_s

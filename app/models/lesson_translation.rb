@@ -4,6 +4,6 @@ class LessonTranslation < ActiveRecord::Base
 
   validates_presence_of :translation, message: "can't be blank"
   validates_presence_of [:lesson_id, :language_id]
-  validates_uniqueness_of [:lesson_id, :language_id], on: :create, message: "must be unique"
+  validates_uniqueness_of :lesson_id, :scope => :language_id, on: :create, message: "must be unique"
 
 end

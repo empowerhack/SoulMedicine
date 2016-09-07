@@ -8,7 +8,7 @@ class Lesson < ActiveRecord::Base
   validates_presence_of :name, message: "can't be blank"
   validates_presence_of :order, message: "can't be blank"
   validates_presence_of :subject_matter_id, message: "can't be blank"
-  validates_uniqueness_of [:subject_matter_id, :name], on: :create, message: "combo already exists"
+  validates_uniqueness_of :name, :scope => :subject_matter_id, on: :create, message: "already exists for subject matter"
   validates_numericality_of :order
 
   accepts_nested_attributes_for :lesson_translation, :allow_destroy => true
