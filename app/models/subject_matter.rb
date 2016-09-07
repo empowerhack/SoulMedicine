@@ -9,6 +9,11 @@ class SubjectMatter < ActiveRecord::Base
   
   accepts_nested_attributes_for :lesson, :allow_destroy => true
   
+  validates_presence_of :name, message: "can't be blank"
+  validates_presence_of :description, message: "can't be blank"
+  validates_presence_of :order, message: "can't be blank"
+  validates_presence_of :is_active, message: "can't be blank"
+  validates_presence_of :course_id, message: "can't be blank"
   validates_numericality_of :order
 	
 	def to_s

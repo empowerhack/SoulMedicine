@@ -4,10 +4,16 @@ ActiveAdmin.register Lesson do
 
     permit_params do
         permitted = [:subject_matter_id, :name, :order]
+        permitted << [lesson_translation_attributes:[:translation, :language_id, :is_approved, :id]]
         permitted << :is_approved if ['admin', 'superuser', 'courseuser'].include? current_admin_user.role
         permitted
     end
     
+    controller do
+        def scoped_collection
+            super.includes :lesson_translation
+        end
+    end
     
     index do
         selectable_column
@@ -69,8 +75,12 @@ ActiveAdmin.register Lesson do
             end
             if !f.object.new_record?
                 tab "Translations" do
-                    f.has_many :lesson_translation, new_record: false do |lt|
-                        lt.inputs
+                    f.has_many :lesson_translation, heading: false, allow_destroy: false, new_record: false do |lt|
+                        lt.input :language, :input_html => { :disabled => true } 
+                        lt.input :translation
+                        if ['admin', 'superuser', 'courseuser'].include? current_admin_user.role
+                            lt.input :is_approved
+                        end
                     end
                 end
             end

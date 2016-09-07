@@ -2,8 +2,8 @@ ActiveAdmin.register Course do
 
     menu
 
-    permit_params :name, :description, :order, :is_active
-    permit_params subject_matters_attributes: [:_destroy, :id, :name, :description, :order]
+    permit_params :name, :description, :order, :is_active,
+                    subject_matters_attributes: [:_destroy, :id, :name, :description, :order]
     
     remove_filter :lessons, :user, :user_courses
     
@@ -74,7 +74,6 @@ ActiveAdmin.register Course do
                         sm.input :name
                         sm.input :description
                         sm.input :order
-                        sm.actions
                     end
                 end
             end

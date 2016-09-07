@@ -17,6 +17,10 @@ class Course < ActiveRecord::Base
 
   accepts_nested_attributes_for :user_courses
   accepts_nested_attributes_for :subject_matters, :allow_destroy => true
+
+  validates_presence_of :name, message: "can't be blank"
+  validates_presence_of :description, message: "can't be blank"
+  validates_presence_of :order, message: "can't be blank"
   
   
 end

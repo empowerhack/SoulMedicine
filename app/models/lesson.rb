@@ -5,6 +5,9 @@ class Lesson < ActiveRecord::Base
   has_many :lesson_completions, :dependent => :destroy
   has_many :completed_users, :through => :lesson_completions, :source => :user
   
+  validates_presence_of :name, message: "can't be blank"
+  validates_presence_of :order, message: "can't be blank"
+  validates_presence_of :subject_matter_id, message: "can't be blank"
   validates_numericality_of :order
 
   accepts_nested_attributes_for :lesson_translation, :allow_destroy => true
