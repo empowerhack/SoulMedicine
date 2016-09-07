@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Subject 1
   description: MyText
   order: 1
-  is_active: false
+  is_active: true
+  course_id: 1
 
 two:
-  name: MyString
+  name: Subject 2
   description: MyText
-  order: 1
+  order: 2
   is_active: false
+  course_id: 1
