@@ -18,9 +18,8 @@ gem 'passenger'
 #### SoulMedicine specific gems ####
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'twilio-ruby'
-gem 'bootstrap-sass'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'sprockets_better_errors'
-gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'

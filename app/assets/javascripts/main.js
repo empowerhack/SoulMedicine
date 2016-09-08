@@ -1,7 +1,11 @@
-/**
- * Created by quinn on 26/04/2016.
- */
 
-$(window).load(function() {
-	$('#myModal').modal('show');
-})
+$(function() {
+    $('.message .close')
+      .on('click', function() {
+        $(this)
+          .closest('.message')
+          .transition('fade')
+        ;
+      })
+    ;
+});
