@@ -4,6 +4,8 @@ Soul Medicine is a free micro learning, SMS based service helping refugees. It i
 
 [![Build Status](https://travis-ci.org/empowerhack/SoulMedicine.svg?branch=fahadiqbal1-development)](https://travis-ci.org/empowerhack/SoulMedicine)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=soulmedicine-fi&style=flat)](https://soulmedicine-fi.herokuapp.com/)
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/)    
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php)
 
 ## Contribute to the project
 
