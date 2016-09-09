@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825114232) do
+ActiveRecord::Schema.define(version: 20160909194148) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -80,13 +80,17 @@ ActiveRecord::Schema.define(version: 20160825114232) do
   end
 
   create_table "lesson_completions", force: :cascade do |t|
-    t.integer  "lesson_id",  limit: 4
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "lesson_id",         limit: 4
+    t.integer  "user_id",           limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "subject_matter_id", limit: 4
+    t.integer  "course_id",         limit: 4
   end
 
+  add_index "lesson_completions", ["course_id"], name: "fk_rails_b5a8fc7814", using: :btree
   add_index "lesson_completions", ["lesson_id"], name: "index_lesson_completions_on_lesson_id", using: :btree
+  add_index "lesson_completions", ["subject_matter_id"], name: "fk_rails_4a0a7e53f9", using: :btree
   add_index "lesson_completions", ["user_id"], name: "index_lesson_completions_on_user_id", using: :btree
 
   create_table "lesson_translations", force: :cascade do |t|
@@ -183,7 +187,9 @@ ActiveRecord::Schema.define(version: 20160825114232) do
 
   add_index "users", ["country_id", "language_id"], name: "index_users_on_country_id_and_language_id", using: :btree
 
+  add_foreign_key "lesson_completions", "courses"
   add_foreign_key "lesson_completions", "lessons"
+  add_foreign_key "lesson_completions", "subject_matters"
   add_foreign_key "lesson_completions", "users"
   add_foreign_key "lessons", "subject_matters"
   add_foreign_key "subject_matters", "courses"
