@@ -1,10 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 
 # LANGUAGES
 Language.create!(name: 'English')
@@ -241,19 +238,15 @@ Country.create!(name:'Yemen',iso_code:'YE',dial_code:967)
 Country.create!(name:'Zambia',iso_code:'ZM',dial_code:260)
 Country.create!(name:'Zimbabwe',iso_code:'ZW',dial_code:263)
 
-
-# ADMIN
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role: 'admin')
-AdminUser.create!(email: 'superuser@example.com', password: 'password', password_confirmation: 'password', role: 'superuser')
-AdminUser.create!(email: 'courseuser@example.com', password: 'password', password_confirmation: 'password', role: 'courseuser')
-AdminUser.create!(email: 'translator@example.com', password: 'password', password_confirmation: 'password', role: 'translator')
-AdminUser.create!(email: 'user@example.com', password: 'password', password_confirmation: 'password', role: 'user')
-
 # GENDER
 Gender.create!(gender: "Male")
 Gender.create!(gender: "Female")
 Gender.create!(gender: "N/A")
 
 # MESSAGE SERVICES
-MessageService.create!(service: "email")
+MessageService.create!(service: "Email")
 MessageService.create!(service: "SMS")
+
+
+# http://stackoverflow.com/questions/16808471/ruby-on-rails-way-to-create-different-seeds-file-for-environments
+load(Rails.root.join( 'db', 'seeds', "#{Rails.env.downcase}.rb"))

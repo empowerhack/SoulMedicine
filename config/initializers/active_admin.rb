@@ -164,7 +164,7 @@ ActiveAdmin.setup do |config|
   # Add additional meta tags to the head element of active admin pages.
   #
   # Add tags to all pages logged in users see:
-  #   config.meta_tags = { author: 'My Company' }
+    config.meta_tags = { author: 'Fahad Iqbal' }
 
   # By default, sign up/sign in/recover password pages are excluded
   # from showing up in search engine results by adding a robots meta

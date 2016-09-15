@@ -20,3 +20,5 @@ LICENSE
 cookbooks
 *.env
 .c9
+passenger.*.lock
+.sprockets-manifest*.json

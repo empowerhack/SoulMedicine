@@ -13,18 +13,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Heroku Deploy
 gem 'rails_12factor', group: :production
-gem 'passenger'
+gem 'passenger', group: :production
 
 #### SoulMedicine specific gems ####
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'twilio-ruby'
 gem 'bootstrap-sass'
-gem 'active_admin_theme'
+gem 'sprockets_better_errors'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
+gem 'active_admin_theme'
 gem 'sidekiq'
+gem 'sinatra', :require => false
 #### End of SoulMedicine specific gems ####
 
 

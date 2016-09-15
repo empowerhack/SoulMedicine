@@ -4,10 +4,16 @@ ActiveAdmin.register Lesson do
 
     permit_params do
         permitted = [:subject_matter_id, :name, :order]
+        permitted << [lesson_translation_attributes:[:translation, :language_id, :is_approved, :id]]
         permitted << :is_approved if ['admin', 'superuser', 'courseuser'].include? current_admin_user.role
         permitted
     end
     
+    controller do
+        def scoped_collection
+            super.includes :lesson_translation
+        end
+    end
     
     index do
         selectable_column
@@ -31,22 +37,29 @@ ActiveAdmin.register Lesson do
         columns do
             column max_width: "35%" do
                 panel "Lesson" do
-                    h3 "Course: #{lesson.subject_matter.course.name}"
-                    h3 "Subject Matter: #{lesson.subject_matter.name}"
-                    h3 "Lesson Name: #{lesson.name}"
+                    attributes_table_for lesson do
+                        row :name
+                        row :description
+                        row :order
+                        row('Course') { |l| link_to l.subject_matter.course.name, admin_course_path(l.subject_matter.course) }
+                        row('Subject Matter') { |l| link_to l.subject_matter.name, admin_subject_matter_path(l.subject_matter) }
+                    end
                 end
             end
             column max_width: "65%" do
                 panel "Translations" do
                     table_for lesson.lesson_translation do
                         column "Language" do |lt|
-                            lt.language.name
+                            link_to lt.language.name, admin_lesson_translation_path(lt)
                         end
                         column "Translation" do |lt|
                             raw(lt.translation)
                         end
                         column "Approved" do |lt|
                             status_tag lt.is_approved
+                        end
+                        column do |lt|
+                            link_to "Edit", edit_admin_lesson_translation_path(lt)
                         end
                     end
                 end
@@ -62,8 +75,12 @@ ActiveAdmin.register Lesson do
             end
             if !f.object.new_record?
                 tab "Translations" do
-                    f.has_many :lesson_translation, new_record: false do |lt|
-                        lt.inputs
+                    f.has_many :lesson_translation, heading: false, allow_destroy: false, new_record: false do |lt|
+                        lt.input :language, :input_html => { :disabled => true } 
+                        lt.input :translation
+                        if ['admin', 'superuser', 'courseuser'].include? current_admin_user.role
+                            lt.input :is_approved
+                        end
                     end
                 end
             end

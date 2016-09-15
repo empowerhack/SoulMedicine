@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
+  name: Course Uno
+  description: Uno course
   order: 1
-  is_active: false
+  is_active: true
 
 two:
-  name: MyString
-  description: MyText
-  order: 1
+  name: Course Dos
+  description: Dos course
+  order: 2
   is_active: false
