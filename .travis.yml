@@ -4,9 +4,9 @@ rvm:
 services:
   - mysql
   - redis-server
-branches:
-    only:
-        - fahadiqbal1-development
+# branches:
+#     only:
+#         - fahadiqbal1-development
 script:
   - RAILS_ENV=test bundle exec rake db:schema:load --trace
   - bundle exec rake db:test:prepare

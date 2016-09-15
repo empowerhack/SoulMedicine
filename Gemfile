@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Heroku Deploy
 gem 'rails_12factor', group: :production
-gem 'passenger'
+gem 'passenger', group: :production
 
 #### SoulMedicine specific gems ####
 gem 'dotenv-rails', :groups => [:development, :test]
