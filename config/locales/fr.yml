@@ -26,3 +26,16 @@ fr:
 
   message:
     body: "Quote sera ici une fois DB schéma est décidé"
+
+  site:
+    title: âme Médecine
+    tagline: Illuminez votre journée en apprenant quelque chose de nouveau
+    sub_tagline: Un programme bien-être mental qui envoie des cours de connaissances de bien-crowdsourcing et des citations. Choisissez les langues (oui, vous pouvez vous inscrire à plus d'un!) Que vous voulez et le temps qui vous convient de commencer à recevoir les messages!
+    change_lang: La langue
+    sign_in: Se connecter
+    pages:
+      homepage: Page d'accueil
+      ethos: génie
+      courses: Cours
+      contribute: Contribuer
+      donate: Faire un don  

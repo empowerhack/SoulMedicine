@@ -20,9 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  home:
-    title: "Soul Medicine"
-    get_number: "Mobile Number"
-
-  message:
-    body: "Quote will go here once DB schema is decided"
+  site:
+    title: Soul Medicine
+    tagline: Brighten your day by learning something new
+    sub_tagline: A mental well-being programme that sends  crowdsourced feel-good knowledge courses and quotes. Choose the languages (yes, you can sign up for more than one!) you want & the time that suits you to start receiving the messages!
+    change_lang: Language
+    sign_in: Sign In
+    pages:
+      homepage: Home
+      ethos: Ethos
+      courses: Courses
+      contribute: Contribute
+      donate: Donate  
