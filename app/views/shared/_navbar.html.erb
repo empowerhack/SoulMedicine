@@ -31,20 +31,22 @@
 <!--</nav>-->
 <div class="ui stackable menu">
 	<div class="header item">
-		Soul Medicine
+		<%= t('site.title')%>
 	</div>
-	<%= link_to('Learn More', '#', class: 'item') %>
-	<%= link_to('NGO Area', '#', class: 'item') %>
-	<%= link_to('Contact Us', '#', class: 'item') %>
+	<%= link_to(t('site.pages.homepage'), '#', class: 'item') %>
+	<%= link_to(t('site.pages.ethos'), '#', class: 'item') %>
+	<%= link_to(t('site.pages.courses'), '#', class: 'item') %>
+	<%= link_to(t('site.pages.contribute'), '#', class: 'item') %>
+	<%= link_to(t('site.pages.donate'), '#', class: 'item') %>
 	<div class="right stackable menu">
-		<%= link_to('<i class="sign in icon"></i> Sign In'.html_safe, '#', class: 'item') %>
+		<%= link_to('<i class="sign in icon"></i> '.html_safe+t('site.sign_in'), '#', class: 'item') %>
 		<div class="ui simple dropdown item">
-			<i class="translate icon"></i> Language
+			<i class="translate icon"></i> <%= t('site.change_lang')%>
 			<i class="dropdown icon"></i>
 			<div class="menu">
 				<div class="item"><%= link_to 'English', locale: 'en' %></div>
-				<div class="item"><%= link_to 'French', locale: 'fr' %></div>
-				<div class="item"><%= link_to 'Arabic', locale: 'ar' %></div>
+				<div class="item"><%= link_to 'Français', locale: 'fr' %></div>
+				<div class="item"><%= link_to 'العربية', locale: 'ar' %></div>
 			</div>
 		</div>
 	</div>
