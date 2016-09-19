@@ -1,0 +1,12 @@
+.masthead {
+    &.segment {
+        min-height: 700px;
+        padding: 1em 0em;
+    }
+    h1.ui.header {
+        margin-top: 3em;
+        margin-bottom: 0em;
+        font-size: 4em;
+        font-weight: normal;
+    }
+}

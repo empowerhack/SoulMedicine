@@ -1,123 +1,123 @@
-@font-face {
-  font-family: 'Lato';
-  src: url('../fonts/lato/lato-regular.eot');
-  src: url('../fonts/lato/lato-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/lato/lato-regular.woff') format('woff'), url('../fonts/lato/lato-regular.ttf') format('truetype'), url('../fonts/lato/lato-regular.svg#latoregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'Lato';
+//   src: url('../fonts/lato/lato-regular.eot');
+//   src: url('../fonts/lato/lato-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/lato/lato-regular.woff') format('woff'), url('../fonts/lato/lato-regular.ttf') format('truetype'), url('../fonts/lato/lato-regular.svg#latoregular') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
-html body {
-  font-family: 'Lato', 'sans-serif';
-}
+// html body {
+//   font-family: 'Lato', 'sans-serif';
+// }
 
-h1 {
-  font-size: 45px;
-}
+// h1 {
+//   font-size: 45px;
+// }
 
 
-#panel-background {
-  color: #dfdfdf;
-  background-color: #204c6f;
-  border-color: #ddd;
-}
+// #panel-background {
+//   color: #dfdfdf;
+//   background-color: #204c6f;
+//   border-color: #ddd;
+// }
 
-.pin {
-  padding-top: 10%;
-}
+// .pin {
+//   padding-top: 10%;
+// }
 
-.col-centered{
-  float: none;
-  margin: 0 auto;
-}
+// .col-centered{
+//   float: none;
+//   margin: 0 auto;
+// }
 
-.background-home{
-  background-color: #18DCB5;
-  height: 100vh;
-  color: white;
-}
+// .background-home{
+//   background-color: #18DCB5;
+//   height: 100vh;
+//   color: white;
+// }
 
-.logo{
-  padding-top: 5%;
-}
+// .logo{
+//   padding-top: 5%;
+// }
 
-.btn-home {
-  border-color: #f05f40;
-  color: #222;
-  background-color: #f05f40;
-  -webkit-transition: all .35s;
-  -moz-transition: all .35s;
-  transition: all .35s;
-}
+// .btn-home {
+//   border-color: #f05f40;
+//   color: #222;
+//   background-color: #f05f40;
+//   -webkit-transition: all .35s;
+//   -moz-transition: all .35s;
+//   transition: all .35s;
+// }
 
-.btn-home:hover{
-  border-color: #45525b;
-  color: #fff;
-  background-color: #45525B;
-}
+// .btn-home:hover{
+//   border-color: #45525b;
+//   color: #fff;
+//   background-color: #45525B;
+// }
 
-.btn{
-  border: 0;
-  border-radius: 300px;
-  text-transform: uppercase;
-  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-  font-weight: 700;
-}
+// .btn{
+//   border: 0;
+//   border-radius: 300px;
+//   text-transform: uppercase;
+//   font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+//   font-weight: 700;
+// }
 
-@media (min-width: 768px)
-{
-  .navbar-default {
-    border-color: rgba(255,255,255,.3);
-    background-color: transparent;
-  }
-}
-.logout{
-  background-color: #F05F40;
-}
+// @media (min-width: 768px)
+// {
+//   .navbar-default {
+//     border-color: rgba(255,255,255,.3);
+//     background-color: transparent;
+//   }
+// }
+// .logout{
+//   background-color: #F05F40;
+// }
 
-.logout:hover{
+// .logout:hover{
 
-}
+// }
 
-p.icon-title-home {
-  display: inline;
-  font-size: 1.35em;
-  vertical-align: top;
-  font-weight: bold;
-  font-family: 'lato', 'sans-serif';
-  color: #444444;
-  overflow: hidden;
-}
+// p.icon-title-home {
+//   display: inline;
+//   font-size: 1.35em;
+//   vertical-align: top;
+//   font-weight: bold;
+//   font-family: 'lato', 'sans-serif';
+//   color: #444444;
+//   overflow: hidden;
+// }
 
-p.icon-text-home {
-  display: inline;
-  font-size: 1.3em;
-  vertical-align: top;
-  font-family: 'lato', 'sans-serif';
-  color: #444444;
-  overflow: hidden;
-}
+// p.icon-text-home {
+//   display: inline;
+//   font-size: 1.3em;
+//   vertical-align: top;
+//   font-family: 'lato', 'sans-serif';
+//   color: #444444;
+//   overflow: hidden;
+// }
 
-.padding{
-  padding-top: 5%;
-}
-.home-icon {
-  padding-top: 10%;
-  padding-left: 10%;
-  padding-bottom: 10%;
-}
+// .padding{
+//   padding-top: 5%;
+// }
+// .home-icon {
+//   padding-top: 10%;
+//   padding-left: 10%;
+//   padding-bottom: 10%;
+// }
 
-.one-icon-home {
-  color: #237185;
-}
+// .one-icon-home {
+//   color: #237185;
+// }
 
-.two-icon-home {
-  color: #f9572e;
-}
+// .two-icon-home {
+//   color: #f9572e;
+// }
 
-.three-icon-home {
-  color: #8e8e8e;
-}
+// .three-icon-home {
+//   color: #8e8e8e;
+// }
 
-.four-icon-home {
-  color: #74b0ca;
-}
+// .four-icon-home {
+//   color: #74b0ca;
+// }

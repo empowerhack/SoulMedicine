@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -15,6 +16,7 @@
     <%= render 'shared/navbar' %>
     <%= semantic_flash %>
     <%= yield %>
+    <%= yield :post_body %>
 
   </body>
 </html>
