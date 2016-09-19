@@ -9,6 +9,10 @@ $(function() {
       })
     ;
     
+    $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+    
     $('select.dropdown')
       .dropdown()
     ;

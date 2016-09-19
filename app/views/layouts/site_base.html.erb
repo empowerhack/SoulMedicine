@@ -14,9 +14,11 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <%= semantic_flash %>
-    <%= yield %>
-    <%= yield :post_body %>
+    <div class="pusher">
+      <%= semantic_flash %>
+      <%= yield %>
+      <%= yield :after_body %>
+    </div>
 
   </body>
 </html>
