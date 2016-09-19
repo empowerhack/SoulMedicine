@@ -8,4 +8,8 @@ $(function() {
         ;
       })
     ;
+    
+    $('select.dropdown')
+      .dropdown()
+    ;
 });

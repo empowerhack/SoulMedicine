@@ -11,3 +11,12 @@ ar:
       courses: دورة
       contribute: يساهم
       donate: تبرع  
+  homepage:
+    get_started: ابدأوا
+    sign_up:
+      current_country_label: بلدك الحالي
+      current_country_placeholder: الرجاء اختيار البلد من SIM المحمول
+      native_language_label: اللغة الأصلية الخاصة بك
+      native_language_placeholder: الرجاء اختيار لغتك الأم
+      mobile_number_label: رقم هاتفك
+      sign_up_button: سجل

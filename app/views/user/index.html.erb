@@ -1,14 +1,43 @@
-<div class="ui inverted vertical masthead center aligned segment">
+<div class="ui inverted vertical masthead center aligned segment" id="soulmedicine-home-masthead">
     <div class="ui text container">
         <h1 class="ui inverted header">
             <%= t('site.title') %>
         </h1>
         <h2><%= t('site.tagline') %>.</h2>
         <p><%= t('site.sub_tagline') %></p>
-        <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+        <a href="#sign-up-form" class="ui huge primary button"><%= t('homepage.get_started') %> <i class="right arrow icon"></i></a>
     </div>
 </div>
 
+<div class="ui vertical" id="sign-up-form">
+    <%= form_for(@user, url: {action: :send_message}, html: {class: 'ui form container'}) do |f| %>
+    <% if @user.errors.any? %>
+        <div class="ui message">
+        <div class="header">We had some issues</div>
+        <ul class="list">
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+    <div class="three fields stacked">
+        <div class="required field">
+            <label><%= t('homepage.sign_up.current_country_label') %></label>
+            <%= collection_select(:country, :dial_code, Country.where(:is_active => true), :id, :name, {:prompt => t('homepage.sign_up.current_country_placeholder')}, {:class => 'ui fluid search selection dropdown', :required => :true}) %>
+        </div>
+        <div class="required field">
+            <label><%= t('homepage.sign_up.native_language_label') %></label>
+            <%= collection_select(:language, :id, Language.where(:is_active => true), :id, :name, {:prompt => t('homepage.sign_up.native_language_placeholder')}, {:class => 'ui fluid selection dropdown', :required => :true}) %>
+        </div>
+        <div class="required field">
+            <label><%= t('homepage.sign_up.mobile_number_label') %></label>
+            <%= f.text_field :mobile_number, class: '', :required => :true %>
+        </div>
+    </div>
+    <%= submit_tag(t('homepage.sign_up.sign_up_button'), class: 'fluid ui positive large button') %>
+    <% end %>
+</div>
 
 <% content_for :head do %>
    <%= stylesheet_link_tag "pages/homepage" -%>
