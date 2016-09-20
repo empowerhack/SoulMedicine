@@ -1,28 +1,5 @@
-<!--<div class="ui large stackable menu">-->
-<!--	<div class="header item">-->
-<!--		<%= t('site.title') %>-->
-<!--	</div>-->
-<!--	<%= link_to(t('site.pages.homepage'), root_path, class: 'item') %>-->
-<!--	<%= link_to(t('site.pages.ethos'), get_page_url('ethos'), class: 'item') %>-->
-<!--	<%= link_to(t('site.pages.courses'), get_page_url('courses'), class: 'item') %>-->
-<!--	<%= link_to(t('site.pages.contribute'), get_page_url('contribute'), class: 'item') %>-->
-<!--	<%= link_to(t('site.pages.donate'), get_page_url('donate'), class: 'item') %>-->
-<!--	<div class="right stackable menu">-->
-<!--		<%= link_to('<i class="sign in icon"></i> '.html_safe+t('site.sign_in'), login_path, class: 'item') %>-->
-<!--		<div class="ui simple dropdown item">-->
-<!--			<i class="translate icon"></i> <%= t('site.change_lang')%>-->
-<!--			<i class="dropdown icon"></i>-->
-<!--			<div class="menu">-->
-<!--				<div class="item"><%= link_to 'English', locale: 'en' %></div>-->
-<!--				<div class="item"><%= link_to 'Français', locale: 'fr' %></div>-->
-<!--				<div class="item"><%= link_to 'العربية', locale: 'ar' %></div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</div>-->
-
-<div class="ui grid">
-	<div class="column large screen only">
+<div class="ui relaxed grid">
+	<div class="column large screen only" id="computer-menu">
 		<div class="ui large stackable menu">
 			<div class="header item">
 				<%= t('site.title') %>
@@ -38,9 +15,9 @@
 					<i class="translate icon"></i> <%= t('site.change_lang')%>
 					<i class="dropdown icon"></i>
 					<div class="menu">
-						<div class="item"><%= link_to 'English', locale: 'en' %></div>
-						<div class="item"><%= link_to 'Français', locale: 'fr' %></div>
-						<div class="item"><%= link_to 'العربية', locale: 'ar' %></div>
+						<%= link_to('English', url_for( :locale => 'en' ), class: 'item') %>
+						<%= link_to('Français', url_for( :locale => 'fr' ), class: 'item') %>
+						<%= link_to('العرب', url_for( :locale => 'ar' ), class: 'item') %>
 					</div>
 				</div>
 			</div>
@@ -48,7 +25,7 @@
 	</div>
 </div>
 
-<div class="ui left vertical menu sidebar">
+<div class="ui left vertical menu sidebar hidden">
 	<%= link_to(t('site.pages.homepage'), root_path, class: 'item') %>
 	<%= link_to(t('site.pages.ethos'), get_page_url('ethos'), class: 'item') %>
 	<%= link_to(t('site.pages.courses'), get_page_url('courses'), class: 'item') %>
@@ -56,9 +33,9 @@
 	<%= link_to(t('site.pages.donate'), get_page_url('donate'), class: 'item') %>
 	<%= link_to('<i class="sign in icon"></i> '.html_safe+t('site.sign_in'), login_path, class: 'item') %>
 	<div class="header item"><i class="translate icon"></i> <%= t('site.change_lang')%></div>
-	<div class="item"><%= link_to 'English', locale: 'en' %></div>
-	<div class="item"><%= link_to 'Français', locale: 'fr' %></div>
-	<div class="item"><%= link_to 'العربية', locale: 'ar' %></div>
+	<%= link_to('English', url_for( :locale => 'en' ), class: 'item') %>
+	<%= link_to('Français', url_for( :locale => 'fr' ), class: 'item') %>
+	<%= link_to('العرب', url_for( :locale => 'ar' ), class: 'item') %>
 </div>
 
 <div class="ui grid">
