@@ -1,7 +1,10 @@
-/**
- * Created by quinn on 26/04/2016.
- */
 
-$(window).load(function() {
-	$('#myModal').modal('show');
-})
+$( document ).ready(function() {
+  $('.message .close').on('click', function() {
+    $(this).closest('.message').transition('fade');
+  });
+    
+  $('.ui.sidebar').sidebar('attach events', '.toc.item');
+  
+  $('select.dropdown').dropdown();
+});

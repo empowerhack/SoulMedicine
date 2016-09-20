@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Soul Medicine" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= yield :head %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= render 'shared/navbar' %>
+    <div class="pusher">
+      <%= semantic_flash %>
+      <%= yield %>
+      <%= yield :after_body %>
+    </div>
+
+  </body>
+</html>

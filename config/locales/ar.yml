@@ -1,0 +1,22 @@
+ar:
+  site:
+    title: طب النفس
+    tagline: سطع يومك تعلم شيء جديد
+    sub_tagline: والعقلي برنامج الرفاه التي ترسل من حشد المصادر الشعور بالسعادة دورات المعرفة والاقتباس. اختر اللغات (نعم، يمكنك الاشتراك لأكثر من واحد!) تريد والوقت الذي يناسبك لبدء تلقي الرسائل!
+    change_lang: لغة
+    sign_in: تسجيل الدخول
+    pages:
+      homepage: الصفحة الرئيسية
+      ethos: روح الشعب
+      courses: دورة
+      contribute: يساهم
+      donate: تبرع  
+  homepage:
+    get_started: ابدأوا
+    sign_up:
+      current_country_label: بلدك الحالي
+      current_country_placeholder: الرجاء اختيار البلد من SIM المحمول
+      native_language_label: اللغة الأصلية الخاصة بك
+      native_language_placeholder: الرجاء اختيار لغتك الأم
+      mobile_number_label: رقم هاتفك
+      sign_up_button: سجل

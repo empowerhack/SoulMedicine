@@ -11,17 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap
 //= require jquery_ujs
-//= require html5shiv
-//= require jquery.magnific-popup
-//= require jquery.corner
-//= require main
-//= require modernizr.custom
-//= require owl.carousel
-//= require PIE_IE9
-//= require PIE_IE678
-//= require script
-//= require uiMorphingButton_inflow
 //= require turbolinks
 //= require_tree .
+//= require semantic-ui

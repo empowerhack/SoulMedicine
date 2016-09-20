@@ -23,7 +23,7 @@ class MessengerController < ApplicationController
 	      session[:user_id] = @user.id
 	      redirect_to(controller: 'pin', action: 'index')
     else
-			flash[:error] = @user.errors.full_messages
+		# 	flash[:error] = @user.errors.full_messages
 			render 'user/index'
     end
 

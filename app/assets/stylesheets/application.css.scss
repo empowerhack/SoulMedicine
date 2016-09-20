@@ -11,8 +11,6 @@
  * file per style scope.
  *= require_tree .
  *= require_self
+
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "loggedOut";
-@import "font-awesome"
+@import "semantic-ui";
