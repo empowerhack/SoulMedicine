@@ -1,7 +1,11 @@
 class UserPreferenceController < ApplicationController
 
 	def index
-		@user_preferences = UserPreference.new
+		if cookies[:current_user_id]
+			@user_preferences = UserPreference.new
+		else
+			redirect_to controller: 'user', action: 'index'
+		end
 	end
 
 	def create
