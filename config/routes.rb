@@ -4,6 +4,13 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  require 'sidekiq/web'
+  require 'sidetiq/web'
+  authenticate :admin_user, lambda { |u| u.canSidekiq? }  do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     root to: 'user#index'
     get 'pin/verify'
@@ -15,10 +22,6 @@ Rails.application.routes.draw do
     get '/logout' => 'sessions#destroy'
     match ':controller(/:action(/:id))', :via => [:get, :post, :patch]
   end
-  
-  require 'sidekiq/web'
-  authenticate :admin_user, lambda { |u| u.canSidekiq? }  do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-  
+
+
 end
