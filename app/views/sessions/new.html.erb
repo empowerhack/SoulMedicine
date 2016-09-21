@@ -1,9 +1,79 @@
-<h1>Login</h1>
+<div class="ui middle aligned center aligned grid three columns">
+	<div class="column"></div>
+	<div class="column">
+		<h2 class="ui teal icon image header">
+	      <%= image_tag('logo.png', class: 'ui centered tiny image') %> 
+	      <div class="content">
+	        <%= t('sign_in_page.header') %>
+	      </div>
+	    </h2>
+	    <%= form_tag({:action => 'verify'}, {:class => 'ui large form'}) do %>
+	      <div class="ui stacked segment">
+	        <div class="field">
+	          <div class="ui left icon input">
+	            <i class="mobile icon"></i>
+	            <%= text_field_tag :phone, nil, :placeholder => t('sign_in_page.form.phone') %>
+	          </div>
+	        </div>
+	        <div class="field">
+	          <div class="ui left icon input">
+	            <i class="lock icon"></i>
+	            <%= password_field_tag :password, nil, :placeholder => t('sign_in_page.form.password') %>
+	          </div>
+	        </div>
+	        <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
+				<i class="sign in icon"></i> <%= t('site.sign_in') %>
+			<% end %>
+	      </div>
+	
+	      <div class="ui error message"></div>
+	
+	    <% end %>
+	
+	    <div class="ui message">
+	      New to us? <a href="#">Sign Up</a>
+	    </div>
+	</div>
+	<div class="column"></div>
+</div>
 
-<%= form_tag '/login' do %>
-
-		Email: <%= text_field_tag :email %>
-		Password: <%= password_field_tag :password %>
-		<%= submit_tag "Submit" %>
-
+<% content_for :after_body do %>
+	<script>
+		$(document).ready(function() {
+			$('.ui.form').form({
+				fields: {
+					email: {
+						identifier  : 'phone',
+						rules: [
+							{
+								type   : 'empty',
+								prompt : '<%= t('sign_in_page.form.validations.phone_empty') %>'
+							},
+							{
+								type   : 'integer[1..999999999999]',
+								prompt : '<%= t('sign_in_page.form.validations.phone_invalid_number') %>'
+							},
+							{
+								type   : 'minLength[7]',
+								prompt : '<%= t('sign_in_page.form.validations.phone_invalid_number') %>'
+							}
+						]
+					},
+					password: {
+						identifier  : 'password',
+						rules: [
+							{
+								type   : 'empty',
+								prompt : '<%= t('sign_in_page.form.validations.password_empty') %>'
+							},
+							{
+								type   : 'length[6]',
+								prompt : '<%= t('sign_in_page.form.validations.password_length') %>'
+							}
+						]
+					}
+				}
+			});
+		});
+	</script>
 <% end %>

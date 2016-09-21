@@ -15,7 +15,11 @@
   <body>
     <%= render 'shared/navbar' %>
     <div class="pusher">
-      <%= semantic_flash %>
+      <div class="ui grid three columns">
+        <div class="one column centered">
+          <%= semantic_flash %>
+        </div>
+      </div>
       <%= yield %>
       <%= yield :after_body %>
     </div>
