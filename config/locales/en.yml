@@ -30,3 +30,12 @@ en:
         phone_invalid_number: Please enter a valid phone number
         password_empty: Please enter your password
         password_length: Your password must be at least 6 characters
+  verify_pin_page:
+    header: Verify Your Phone Number
+    form:
+      mobile_number: Enter your phone number (without the country code)
+      pin: Enter the PIN your received via SMS
+      validations:
+        pin_empty: Please enter the pin provided
+        pin_length: Your PIN must be at least 5 digits
+        pin_invalid: Please enter a valid PIN

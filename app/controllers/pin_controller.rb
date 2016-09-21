@@ -1,6 +1,7 @@
 class PinController < ApplicationController
 
-	layout 'logged_out'
+	layout 'site_base'
+	
 	def index
 		@user = User.all
 	end
@@ -24,7 +25,7 @@ class PinController < ApplicationController
 			end
 		else
 			flash[:error] = 'Wrong pin! Please try again'
-			render 'index'
+			redirect_to( action: 'index')
 		end
   end
 end
