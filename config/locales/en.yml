@@ -20,3 +20,13 @@ en:
       native_language_placeholder: Please select your native language
       mobile_number_label: Your Mobile Number
       sign_up_button: Sign Up
+  sign_in_page:
+    header: Log-in to your account
+    form:
+      phone: Enter your phone number (without the country code)
+      password: Password
+      validations:
+        phone_empty: Please enter your phone number
+        phone_invalid_number: Please enter a valid phone number
+        password_empty: Please enter your password
+        password_length: Your password must be at least 6 characters

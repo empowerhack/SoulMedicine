@@ -20,3 +20,13 @@ ar:
       native_language_placeholder: الرجاء اختيار لغتك الأم
       mobile_number_label: رقم هاتفك
       sign_up_button: سجل
+  sign_in_page:
+    header: تسجيل الدخول إلى حسابك
+    form:
+      phone: أدخل رقم هاتفك (بدون رمز البلد)
+      password: كلمه السر
+      validations:
+        phone_empty: يرجى إدخال رقم الهاتف الخاص بك
+        phone_invalid_number: يرجى إدخال رقم هاتف صالح
+        password_empty: من فضلك أدخل رقمك السري
+        password_length: يجب أن تكون كلمة المرور 6 أحرف على الأقل
