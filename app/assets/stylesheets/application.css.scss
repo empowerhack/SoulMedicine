@@ -19,13 +19,15 @@
     .mobile-menu {
         margin-top: 1rem !important;
     }
-    &.content > section {
+    &.content > .segment {
         &:last-child {
             margin-bottom: 2em;
         }
-        > .header {
-            margin: 2em 0em 1em;
+
+        &:first-child {
+            margin-top: 2em;
         }
+        
         > .section-text {
             font-size: larger;
             margin: auto auto auto 1em;
