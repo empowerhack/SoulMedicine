@@ -21,7 +21,10 @@ class User < ActiveRecord::Base
   validates_presence_of :country_id, :mobile_number, :language_id
 
   after_create :load_user_extras
-  
+
+  scope :morning_users, -> { joins(:user_preference).where("user_preferences.delivery_time = ?", 'morning').where('verified = true')}
+
+
   def load_user_extras
     UserPreference.create(
       user_id: self.id
