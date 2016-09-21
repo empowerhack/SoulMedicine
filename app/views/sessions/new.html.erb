@@ -1,9 +1,45 @@
-<h1>Login</h1>
 
-<%= form_tag '/login' do %>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    
+  </div>
+</div>
 
-		Email: <%= text_field_tag :email %>
-		Password: <%= password_field_tag :password %>
-		<%= submit_tag "Submit" %>
-
-<% end %>
+<div class="ui middle aligned center aligned grid three columns">
+	<div class="column"></div>
+	<div class="column">
+		<h2 class="ui teal image header">
+	      <%= image_tag('logo.png', class: 'ui centered tiny image') %> 
+	      <div class="content">
+	        Log-in to your account
+	      </div>
+	    </h2>
+	    <%= form_tag '/login', {:class => 'ui large form'} do %>
+	      <div class="ui stacked segment">
+	        <div class="field">
+	          <div class="ui left icon input">
+	            <i class="mobile icon"></i>
+	            <%= text_field_tag :email, nil, :placeholder => 'Enter your phone number (without the country code)' %>
+	          </div>
+	        </div>
+	        <div class="field">
+	          <div class="ui left icon input">
+	            <i class="lock icon"></i>
+	            <%= password_field_tag :password, nil, :placeholder => 'Password' %>
+	          </div>
+	        </div>
+	        <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
+				<i class="sign in icon"></i> <%= t('site.sign_in') %>
+			<% end %>
+	      </div>
+	
+	      <div class="ui error message"></div>
+	
+	    <% end %>
+	
+	    <div class="ui message">
+	      New to us? <a href="#">Sign Up</a>
+	    </div>
+	</div>
+	<div class="column"></div>
+</div>

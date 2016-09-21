@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+	layout 'site_base'
+	
   def new
   end
 
