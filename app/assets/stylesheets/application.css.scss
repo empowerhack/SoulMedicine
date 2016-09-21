@@ -16,9 +16,19 @@
 @import "semantic-ui";
 
 .ui {
-    .dividing {
-        &.header {
-            margin: 4em 0em 3em;
+    .mobile-menu {
+        margin-top: 1rem !important;
+    }
+    &.content > section {
+        &:last-child {
+            margin-bottom: 2em;
+        }
+        > .header {
+            margin: 2em 0em 1em;
+        }
+        > .section-text {
+            font-size: larger;
+            margin: auto auto auto 1em;
         }
     }
 }
