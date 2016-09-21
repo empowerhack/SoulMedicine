@@ -14,3 +14,11 @@
 
  */
 @import "semantic-ui";
+
+.ui {
+    .dividing {
+        &.header {
+            margin: 4em 0em 3em;
+        }
+    }
+}

@@ -39,3 +39,14 @@ en:
         pin_empty: Please enter the pin provided
         pin_length: Your PIN must be at least 5 digits
         pin_invalid: Please enter a valid PIN
+  ethos_page:
+    what_is_soul_medicine: What is Soul Medicine?
+    what_is_soul_medicine_paragraph: |
+      Soul Medicine is a mental well-being programme to help brighten the day of people experiencing loneliness and depression by sending crowdsourced feel-good knowledge courses and quotes.
+      Choose the languages (yes, you can sign up for more than one!) you want & the time that suits you.
+      More than 20 volunteers from CHAYN and EmpowerHack have created these 3 month courses. The year long duration of the course means that refugees can stay connected all year long, throughout their journey and not just at intermediate stops. If you’re not a refugee, you can still sign up to the course!
+      Soul Medicine already ran a pilot in 2015, receiving excellent feedback from abuse survivors. Encouraged by this, we decided to  We want everyone to know that you are not alone, that the mind is just as important as the body and that by treating it well, we can all start to feel better about ourselves - especially when it seems like we don’t have control over our lives.
+      Here’s what our hypothesis is based on:
+      <strong>A motivational quote that is designed to work like a positive affirmation.</strong> Positive affirmations, since first popularised by the French psychologist Emile Coué in the 1920s, have been used to change negative thought patterns and increase self-esteem with multiple studies showing that their use protects individuals against the negative impacts of stress.
+      <strong>A crowdsourced human biology course.</strong> Research has shown that learning has a positive impact on mental well-being by boosting confidence, building self-esteem and creating a sense of purpose. Human Biology was chosen to reflect the importance of the body’s relationship with the mind, deepening that connection of physical and spiritual mindfulness during the course.
+    who_is_it_for: Who is it for?
