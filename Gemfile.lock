@@ -74,6 +74,23 @@ GEM
     builder (3.2.2)
     byebug (9.0.0)
     cancancan (1.13.1)
+    celluloid (0.17.3)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.6)
+      timers (>= 4.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -107,7 +124,9 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hitimes (1.2.4)
     i18n (0.7.0)
+    ice_cube (0.14.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
       has_scope (~> 0.6.0.rc)
@@ -210,6 +229,10 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
       sinatra (>= 1.4.7)
+    sidetiq (0.7.2)
+      celluloid (>= 0.17.3)
+      ice_cube (~> 0.14.0)
+      sidekiq (>= 4.1.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -227,6 +250,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.3)
+    timers (4.1.1)
+      hitimes
     turbolinks (2.5.3)
       coffee-rails
     twilio-ruby (4.11.1)
@@ -269,6 +294,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq
+  sidetiq
   sinatra
   spring
   sprockets_better_errors
