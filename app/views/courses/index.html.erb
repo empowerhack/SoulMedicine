@@ -5,7 +5,25 @@
             <%= course.name %>
         </h2>
         <div class="section-text">
-            <%= course.description %>
+            <p><%= course.description %></p>
+            <div class="ui statistics">
+                <div class="ui statistic">
+                    <div class="value">
+                        <%= course.subject_matters.count %>
+                    </div>
+                    <div class="label">
+                        Subjects
+                    </div>
+                </div>
+                <div class="ui statistic">
+                    <div class="value">
+                        <%= course.lessons.count %>
+                    </div>
+                    <div class="label">
+                        Lessons
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <% end -%>
