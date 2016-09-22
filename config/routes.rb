@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'pages/:page' => 'pages#show', as: 'get_page'
     get '/signup' => 'user_preference#index'
     get 'user_preference/create'
+    get '/courses' => 'courses#index'
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'

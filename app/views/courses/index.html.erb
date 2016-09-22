@@ -1,0 +1,12 @@
+<div class="ui container centered content">
+    <% @courses.each do |course| -%>
+    <div class="ui segment">
+        <h2 class="ui teal header">
+            <%= course.name %>
+        </h2>
+        <div class="section-text">
+            <%= course.description %>
+        </div>
+    </div>
+    <% end -%>
+</div>
