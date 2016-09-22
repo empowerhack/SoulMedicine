@@ -7,4 +7,5 @@ $( document ).on('page:change', function() {
   $('.ui.sidebar').sidebar('attach events', '.toc.item');
   
   $('select.dropdown').dropdown();
+  $('.ui.checkbox').checkbox();
 });
