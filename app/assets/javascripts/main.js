@@ -1,11 +1,13 @@
 
-$( document ).on('page:change', function() {
-  $('.message .close').on('click', function() {
-    $(this).closest('.message').transition('fade');
-  });
+$(function () {
+  $( document ).on('page:change', function() {
+    $('.message .close').on('click', function() {
+      $(this).closest('.message').transition('fade');
+    });
+      
+    $('.ui.sidebar').sidebar('attach events', '.toc.item');
     
-  $('.ui.sidebar').sidebar('attach events', '.toc.item');
-  
-  $('select.dropdown').dropdown();
-  $('.ui.checkbox').checkbox();
+    $('select.dropdown').dropdown();
+    $('.ui.checkbox').checkbox();
+  });
 });
