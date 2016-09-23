@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :set_locale
   
+  # semantic_breadcrumb 'Home', :root_path
   
   def access_denied(exception)
     redirect_to root_url, :alert => exception.message
