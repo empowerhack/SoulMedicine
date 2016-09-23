@@ -22,8 +22,7 @@
           </div>
         </div>
       <% end %>
-      <%= content_for?(:breadcrumbs) ? yield(:breadcrumbs) : yield %>
-      <%= yield %>
+      <%= content_for?(:breadcrumbs) ? yield(:breadcrumbs) + yield : yield %>
       <%= yield :after_body %>
     </div>
 
