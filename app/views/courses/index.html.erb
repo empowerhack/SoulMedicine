@@ -1,30 +1,37 @@
 <div class="ui container centered content">
-    <% @courses.each do |course| -%>
-    <div class="ui segment">
-        <h2 class="ui teal header">
-            <%= course.name %>
-        </h2>
-        <div class="section-text">
-            <p><%= course.description %></p>
-            <div class="ui statistics">
-                <div class="ui statistic">
-                    <div class="value">
-                        <%= course.subject_matters.count %>
-                    </div>
-                    <div class="label">
-                        Subjects
-                    </div>
+    <div class="ui three stackable cards">
+        <% @courses.each do |course| -%>
+            <div class="ui card">
+                <div class="content">
+                    <div class="header"><%= course.name %></div>
+                    <div class="description"><p><%= course.description %></p></div>
                 </div>
-                <div class="ui statistic">
-                    <div class="value">
-                        <%= course.lessons.count %>
+                <div class="extra content">
+                    <div class="ui tiny three statistics">
+                        <div class="ui statistic">
+                            <div class="value"><%= course.subject_matters.count %></div>
+                            <div class="label">Subjects</div>
+                        </div>
+                        <div class="ui statistic">
+                            <div class="value"><%= course.lessons.count %></div>
+                            <div class="label">Lessons</div>
+                        </div>
+                        <div class="ui statistic">
+                            <div class="value"><%= course.user.count %></div>
+                            <div class="label">Users</div>
+                        </div>
                     </div>
-                    <div class="label">
-                        Lessons
+                    <div class="">
+                        <a href="<%= url_for(action: 'show', id: course.id)  %>" class="ui animated fluid teal button" tabindex="0">
+                            <div class="visible content">Explore the course</div>
+                            <div class="hidden content">
+                                <i class="right arrow icon"></i>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
+        <% end -%>
     </div>
-    <% end -%>
+            
 </div>

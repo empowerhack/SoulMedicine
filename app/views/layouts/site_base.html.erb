@@ -15,11 +15,14 @@
   <body>
     <%= render 'shared/navbar' %>
     <div class="pusher">
-      <div class="ui stackable grid three columns">
-        <div class="one column centered">
-          <%= semantic_flash %>
+      <% if !flash.empty? %>
+        <div class="ui stackable grid three columns">
+          <div class="one column centered">
+            <%= semantic_flash %>
+          </div>
         </div>
-      </div>
+      <% end %>
+      <%= content_for?(:breadcrumbs) ? yield(:breadcrumbs) : yield %>
       <%= yield %>
       <%= yield :after_body %>
     </div>

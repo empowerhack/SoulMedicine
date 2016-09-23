@@ -1,0 +1,35 @@
+<div class="ui container centered content">
+    <div class="ui raised segment">
+        <div class="ui huge list">
+            <% if @subjects.each do |subject| -%>
+                <div class="item">
+                    <i class="book icon"></i>
+                    <div class="content">
+                        <div class="header"><%= subject.name %></div>
+                        <div class="description"><%= subject.description %></div>
+                        <div class="list">
+                            <% if subject.lesson.each do |lesson| -%>
+                                <div class="item">
+                                    <i class="file text outline icon"></i>
+                                    <div class="content">
+                                        <div class="header">
+                                            <a href="<%= url_for(action: 'lesson', id: lesson.id)  %>"><%= lesson.name %></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end.empty? -%>
+                                <div class="item">
+                                    <div class="header">This Subject does not have any lessons</div>
+                                </div>
+                            <% end -%>
+                        </div>
+                    </div>
+                </div>
+            <% end.empty? -%>
+                <div class="item">
+                    <div class="header">This Course does not have any subjects</div>
+                </div>
+            <% end -%>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get '/signup' => 'user_preference#index'
     get 'user_preference/create'
     get '/courses' => 'courses#index'
+    get '/course/:id' => 'courses#show', as: 'course'
+    get '/lesson/:id' => 'courses#lesson', as: 'lesson'
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
