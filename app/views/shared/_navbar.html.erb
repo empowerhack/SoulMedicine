@@ -1,5 +1,5 @@
 <div class="ui relaxed grid">
-	<div class="computer only column" id="computer-menu">
+	<div class="column computer only" id="computer-menu">
 		<div class="ui large stackable menu">
 			<div class="header item">
 				<%= image_tag('logo.png', class: 'ui avatar image') %>
@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-<div class="ui left vertical menu sidebar">
+<div class="ui left vertical menu sidebar hidden">
 	<%= link_to(t('site.pages.homepage'), root_path, class: 'item') %>
 	<%= link_to(t('site.pages.ethos'), get_page_url('ethos'), class: 'item') %>
 	<%= link_to(t('site.pages.courses'), courses_path, class: 'item') %>
@@ -40,7 +40,7 @@
 </div>
 
 <div class="ui grid">
-	<div class="tablet mobile only column">
+	<div class="column tablet mobile only">
 		<div class="ui large menu mobile-menu">
 			<div class="header item">
 				<%= t('site.title') %>
