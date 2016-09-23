@@ -17,5 +17,5 @@ $('.toc.item').on('click', function() {
 });
 
 
-// $(document).ready(function () { console.log('Ready to execute'); ready(); });
+$(document).ready(function () { console.log('Ready to execute'); ready(); });
 $(document).on('page:change', ready);
