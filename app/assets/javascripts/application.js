@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require_tree .
 //= require semantic-ui
+
+
+$(document).ready(ready);
+$(document).on('page:change', ready);

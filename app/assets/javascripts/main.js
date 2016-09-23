@@ -16,6 +16,3 @@ ready = function() {
   $('.ui.checkbox').checkbox();
 
 };
-
-$(document).ready(ready);
-$(document).on('page:change', ready);
