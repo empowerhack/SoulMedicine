@@ -26,6 +26,7 @@ Create a GitHub issue [here](https://github.com/empowerhack/SoulMedicine/issues)
 
 
 1. **Admin Guide**
+  1. [Philosophy/Overview](docs/admin/overview.md)
   1. [Logging In](docs/admin/logging-in.md)
 
 
