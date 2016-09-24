@@ -4,7 +4,7 @@ Soul Medicine is a crowdsourced SMS microeducation platform designed to overcome
 
 [![Build Status](https://travis-ci.org/empowerhack/SoulMedicine.svg?branch=fahadiqbal1-development)](https://travis-ci.org/empowerhack/SoulMedicine)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=soulmedicine-fi&style=flat)](https://soulmedicine-fi.herokuapp.com/)
-[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/)    
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php)
 
 ## Contribute to the project
@@ -18,14 +18,18 @@ Create a GitHub issue [here](https://github.com/empowerhack/SoulMedicine/issues)
 ## Documentation
 
 1. **User Guide**
-  1. [Signing Up](docs/SigningUp.md)
-  2. [Verification Process](docs/Verification.md)
-  3. [Editing Preferences](docs/UserPreference.md)
-  4. [Changing Courses](docs/ChangingCourse.md)
-  5. [Providing Feedback](docs/Feedback.md)
+  1. [Signing Up](docs/user/SigningUp.md)
+  2. [Verification Process](docs/user/Verification.md)
+  3. [Editing Preferences](docs/user/UserPreference.md)
+  4. [Changing Courses](docs/user/ChangingCourse.md)
+  5. [Providing Feedback](docs/user/Feedback.md)
+
+
+1. **Admin Guide**
+  1. [Logging In](docs/admin/logging-in.md)
 
 
 1. **Development Guide**
-  1. [Local Development](docs/LocalDevelopment.md)
-  2. [Running Tests](docs/RunningTests.md)
-  3. [Environment Variables](docs/EnvVariables.md)
+  1. [Local Development](docs/dev/LocalDevelopment.md)
+  2. [Running Tests](docs/dev/RunningTests.md)
+  3. [Environment Variables](docs/dev/EnvVariables.md)
