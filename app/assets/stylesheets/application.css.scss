@@ -19,6 +19,9 @@
     .mobile-menu {
         margin-top: 1rem !important;
     }
+    &.pusher {
+        min-height: 100vh;
+    }
     &.content > .segment {
         &:last-child {
             margin-bottom: 2em;
