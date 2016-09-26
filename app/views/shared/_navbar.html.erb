@@ -27,16 +27,16 @@
 </div>
 
 <div class="ui left vertical menu sidebar hidden">
-	<%= link_to(t('site.pages.homepage'), root_path, class: 'item') %>
-	<%= link_to(t('site.pages.ethos'), get_page_url('ethos'), class: 'item') %>
-	<%= link_to(t('site.pages.courses'), courses_path, class: 'item') %>
-	<%= link_to(t('site.pages.contribute'), get_page_url('contribute'), class: 'item') %>
-	<%= link_to(t('site.pages.donate'), get_page_url('donate'), class: 'item') %>
-	<%= link_to('<i class="sign in icon"></i> '.html_safe+t('site.sign_in'), login_path, class: 'item') %>
+	<%= link_to(t('site.pages.homepage'), root_path, class: 'item', method: :get) %>
+	<%= link_to(t('site.pages.ethos'), get_page_url('ethos'), class: 'item', method: :get) %>
+	<%= link_to(t('site.pages.courses'), courses_path, class: 'item', method: :get) %>
+	<%= link_to(t('site.pages.contribute'), get_page_url('contribute'), class: 'item', method: :get) %>
+	<%= link_to(t('site.pages.donate'), get_page_url('donate'), class: 'item', method: :get) %>
+	<%= link_to('<i class="sign in icon"></i> '.html_safe+t('site.sign_in'), login_path, class: 'item', method: :get) %>
 	<div class="header item"><i class="translate icon"></i> <%= t('site.change_lang')%></div>
-	<%= link_to('English', url_for( :locale => 'en' ), class: 'item') %>
-	<%= link_to('Français', url_for( :locale => 'fr' ), class: 'item') %>
-	<%= link_to('العرب', url_for( :locale => 'ar' ), class: 'item') %>
+	<%= link_to('English', url_for( :locale => 'en' ), class: 'item', method: :get) %>
+	<%= link_to('Français', url_for( :locale => 'fr' ), class: 'item', method: :get) %>
+	<%= link_to('العرب', url_for( :locale => 'ar' ), class: 'item', method: :get) %>
 </div>
 
 <div class="ui grid">

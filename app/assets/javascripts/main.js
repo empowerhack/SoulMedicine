@@ -1,5 +1,4 @@
-var ready;
-ready = function() {
+var ready = function() {
     
   $('.ui.sidebar').sidebar('attach events', '.toc.item');
 
