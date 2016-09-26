@@ -5,17 +5,18 @@ ready = function() {
 
   $('select.dropdown').dropdown();
   $('.ui.checkbox').checkbox();
+  
+  $('.message .close').on('click', function() {
+    $(this).closest('.message').fadeOut();
+  });
+  $('.toc.item').on('click', function() {
+    console.log('Sidebar toggled');
+    $('.ui.sidebar').sidebar('toggle');
+  });
 
 };
 
-$('.message .close').on('click', function() {
-  $(this).closest('.message').transition('fade');
-});
-$('.toc.item').on('click', function() {
-  console.log('Sidebar toggled');
-  $('.ui.sidebar').sidebar('toggle');
-});
 
 
-$(document).ready(function () { console.log('Ready to execute'); ready(); });
-$(document).on('page:change', ready);
+$(document).ready(function () { console.log('Page Ready'); ready(); });
+$(document).on('page:change', function () { console.log('Page Changed'); ready(); });
