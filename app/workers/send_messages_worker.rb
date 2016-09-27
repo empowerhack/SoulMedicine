@@ -25,16 +25,36 @@ class SendMessageWorker
             user_courses = findUserActiveCourse(u.id) # Get the Course(s) that the user is subscribed to(returns array)
             user_courses.each do |uc|
                 user_lesson_completions = findUserLessonCompletions(u.id, uc.id) #Get the Lessons that the user has completed
-                    # If the User has not yet started on the course,
-                    # then send the first lesson of the first
-                    # subject on that course
-                    if user_lesson_completions.empty?
-                        subject_matter = Course.find(uc.id).subject_matters.first_active
-                        lesson = SubjectMatter.find(subject_matter.id).lesson.first_active
+                # If the User has not yet started on the course,
+                # then send the first lesson of the first
+                # subject on that course
+                if user_lesson_completions.empty?
+                    subject_matter = Course.find(uc.id).subject_matters.first_active
+                    lesson = SubjectMatter.find(subject_matter.id).lesson.first_active
+                    logger.info "Sending lesson #{lesson.name} for subject: #{subject_matter.name}"
+                else
+                    last_lesson_sent = LessonCompletion.where(:user_id => u.id, :course_id => uc.id).order('created_at desc').first
+                    # If the last lesson that was sent is not the last 
+                    # lesson in the subject, then send the next
+                    # lesson, otherwise proceed to next check
+                    if last_lesson_sent.lesson.next.present?
+                        lesson = last_lesson_sent.lesson.next
                         logger.info "Sending lesson #{lesson.name} for subject: #{subject_matter.name}"
-                    else
-                        last_lesson_sent = ''
+                    else 
+                        # If the last lesson sent was the last lesson in the
+                        # subject, then move on to the next subject's
+                        # first lesson
+                        if last_lesson_sent.subject_matter.next.present?
+                            lesson = last_lesson_sent.subject_matter.next.lesson.first_active
+                            logger.info "Sending lesson #{lesson.name} for subject: #{subject_matter.name}"
+                        else
+                            logger.info "Course has been completed by the user"
+                            user_course = UserCourse.find(uc.id)
+                            user_course.is_complete = true
+                            user_course.save
+                        end
                     end
+                end
             end
         logger.info "Finished sending messages"
         end

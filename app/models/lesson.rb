@@ -22,4 +22,12 @@ class Lesson < ActiveRecord::Base
       end
   end
   
+  def next
+    subject_matter.lesson.where("lessons.order > ?", order).first
+  end
+  
+  def prev
+    subject_matter.lesson.where("lessons.order < ?", order).last
+  end
+  
 end

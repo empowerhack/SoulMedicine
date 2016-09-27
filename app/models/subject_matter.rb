@@ -4,6 +4,9 @@ class SubjectMatter < ActiveRecord::Base
     def first_active
       where(:is_approved => true).order(order: :asc).first
     end
+    def last_active
+      where(:is_approved => true).order(order: :desc).first
+    end
   end
   # has_many :lesson_translation, :through => :lesson
   
@@ -20,5 +23,13 @@ class SubjectMatter < ActiveRecord::Base
 	def to_s
 		name
 	end
+  
+  def next
+    course.subject_matters.where("subject_matters.order > ?", order).first
+  end
+  
+  def prev
+    course.subject_matters.where("subject_matters.order < ?", order).last
+  end
 	
 end
