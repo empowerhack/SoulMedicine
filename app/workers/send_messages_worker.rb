@@ -19,26 +19,24 @@ class SendMessageWorker
     #Send Messages
     ## Method to run through the messages algorithm
     def send_messages
-        puts "Gathering all users with a morning delivery time"
+        logger.info "Gathering all users with a morning delivery time"
         users = User.morning_users # Select all users with a morning delivery time (returns array)
         users.each do |u|
             user_courses = findUserActiveCourse(u.id) # Get the Course(s) that the user is subscribed to(returns array)
             user_courses.each do |uc|
                 user_lesson_completions = findUserLessonCompletions(u.id, uc.id) #Get the Lessons that the user has completed
+                    # If the User has not yet started on the course,
+                    # then send the first lesson of the first
+                    # subject on that course
                     if user_lesson_completions.empty?
-                        subject_matter = SubjectMatter.where(course_id: uc.id, is_active: true).order(:order)
-                        subject_matter.each do |sm|
-                            lesson = Lesson.where(subject_matter: sm.id, is_approved: true).order(:order)
-                                lesson.each do |l|
-                                    lesson_text = LessonTranslation.where(lesson_id: l, language_id: u.language, is_approved: true)
-                                        lesson_text.each do |lt|
-                                            puts lt.translation
-                                        end
-                                end
-                        end
+                        subject_matter = Course.where(id: uc.id).subject_matters.first_active
+                        lesson = SubjectMatter.find(subject_matter.id).lesson.first_active
+                        logger.info "Sending lesson #{lesson.name} for subject: #{subject_matter.name}"
+                    else
+                        last_lesson_sent = ''
                     end
             end
-        puts "Finished sending messages"
+        logger.info "Finished sending messages"
         end
     end
 
