@@ -4,10 +4,10 @@
 
 
 # LANGUAGES
-Language.create!(name: 'English')
-Language.create!(name: 'Français')
-Language.create!(name: 'Deutsche')
-Language.create!(name: 'العربية')
+Language.create!(name: 'English', locale: 'en')
+Language.create!(name: 'Français', locale: 'fr')
+Language.create!(name: 'Deutsche', locale: 'de')
+Language.create!(name: 'العربية', locale: 'ar')
 
 # COUNTRIES
 Country.create!(name:'Afghanistan',iso_code:'AF',dial_code:93)

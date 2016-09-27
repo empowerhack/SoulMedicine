@@ -15,6 +15,7 @@ ActiveAdmin.register Language do
     index do
         selectable_column
         column :name
+        column :locale
         column :is_active
         actions
     end
@@ -22,7 +23,7 @@ ActiveAdmin.register Language do
     filter :name
     filter :is_active
 
-    permit_params :name, :is_active
+    permit_params :name, :is_active, :locale
 
 
 end

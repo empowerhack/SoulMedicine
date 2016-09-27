@@ -40,7 +40,7 @@ class Ability
     courseuser
     can :read, :all
     can :read, AdminUser
-    can :manage, [Country,Language,Gender,MessageService]
+    can :manage, [Country,Language,Gender,MessageService,Translation]
   end
   
   
