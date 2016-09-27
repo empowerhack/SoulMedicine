@@ -29,7 +29,7 @@ class SendMessageWorker
                     # then send the first lesson of the first
                     # subject on that course
                     if user_lesson_completions.empty?
-                        subject_matter = Course.where(id: uc.id).subject_matters.first_active
+                        subject_matter = Course.find(uc.id).subject_matters.first_active
                         lesson = SubjectMatter.find(subject_matter.id).lesson.first_active
                         logger.info "Sending lesson #{lesson.name} for subject: #{subject_matter.name}"
                     else
