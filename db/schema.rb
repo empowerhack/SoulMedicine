@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825114232) do
+ActiveRecord::Schema.define(version: 20160927100217) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -129,6 +129,16 @@ ActiveRecord::Schema.define(version: 20160825114232) do
   end
 
   add_index "subject_matters", ["course_id"], name: "index_subject_matters_on_course_id", using: :btree
+
+  create_table "translations", force: :cascade do |t|
+    t.string   "locale",         limit: 255
+    t.string   "key",            limit: 255
+    t.text     "value",          limit: 65535
+    t.text     "interpolations", limit: 65535
+    t.boolean  "is_proc",                      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_courses", force: :cascade do |t|
     t.integer  "user_id",     limit: 4

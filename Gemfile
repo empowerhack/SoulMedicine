@@ -27,6 +27,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_theme'
 gem 'sidekiq'
 gem 'sinatra', :require => false
+gem 'i18n-active_record', :require => 'i18n/active_record'
 #### End of SoulMedicine specific gems ####
 
 
