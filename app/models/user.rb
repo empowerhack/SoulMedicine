@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   after_create :load_user_extras
 
   scope :morning_users, -> { joins(:user_preference).where("user_preferences.delivery_time = ?", 'morning').where('verified = true')}
+  scope :afternoon_users, -> { joins(:user_preference).where("user_preferences.delivery_time = ?", 'afternoon').where('verified = true')}
+  scope :evening_users, -> { joins(:user_preference).where("user_preferences.delivery_time = ?", 'evening').where('verified = true')}
 
 
   def load_user_extras

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   require 'sidekiq/web'
-  require 'sidetiq/web'
+  # require 'sidetiq/web'
   authenticate :admin_user, lambda { |u| u.canSidekiq? }  do
     mount Sidekiq::Web => '/sidekiq'
   end

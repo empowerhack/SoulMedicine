@@ -26,7 +26,7 @@ gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_theme'
 gem 'sidekiq'
-gem 'sidetiq'
+# gem 'sidetiq'
 gem 'sinatra', :require => false
 #### End of SoulMedicine specific gems ####
 
