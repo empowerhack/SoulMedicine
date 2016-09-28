@@ -1,4 +1,4 @@
-class SendMessagesWorker
+class MessageSendAlgorithmWorker
     include Sidekiq::Worker
     # include Sidetiq::Schedulable
 

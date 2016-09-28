@@ -7,7 +7,7 @@ namespace :soul_med do
 
   desc "Send messages to users"
   task :send_messages, [:timeOfDay] => :environment do |task, args|
-    SendMessagesWorker.perform_async(args.timeOfDay)
+    MessageSendAlgorithmWorker.perform_async(args.timeOfDay)
   end
 
 end
