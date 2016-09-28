@@ -9,7 +9,8 @@ Rails.application.configure do
   Dotenv::Railtie.load
   
   config.cache_classes = false
-Dotenv::Railtie.load
+# Dotenv::Railtie.load
+  require 'sidekiq/testing/inline'
 
   # Do not eager load code on boot.
   config.eager_load = true
