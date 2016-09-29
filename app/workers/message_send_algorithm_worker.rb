@@ -39,6 +39,7 @@ class MessageSendAlgorithmWorker
                         if subject_matter.present?
                             lesson = SubjectMatter.find(subject_matter.id).lesson.first_active
                             logger.info "Sending lesson #{lesson.name} for subject: #{lesson.subject_matter.name}"
+                                CalculateLessonTranslationsWorker.perform_async(u.id,lesson.id)
                         else
                             logger.info "There are no subjects assigned to this course"
                         end
@@ -51,6 +52,7 @@ class MessageSendAlgorithmWorker
                         logger.info "Sending the next lesson in the subject"
                         lesson = last_lesson_sent.lesson.next
                         logger.info "Sending lesson #{lesson.name} for subject: #{lesson.subject_matter.name}"
+                            CalculateLessonTranslationsWorker.perform_async(u.id,lesson.id)
                     else 
                         # If the last lesson sent was the last lesson in the
                         # subject, then move on to the next subject's
@@ -59,6 +61,7 @@ class MessageSendAlgorithmWorker
                             logger.info "Starting the next subject on this course for this user"
                             lesson = last_lesson_sent.subject_matter.next.lesson.first_active
                             logger.info "Sending lesson #{lesson.name} for subject: #{lesson.subject_matter.name}"
+                                CalculateLessonTranslationsWorker.perform_async(u.id,lesson.id)
                         else
                             logger.info "Course has been completed by the user"
                             user_course = UserCourse.find(uc.id)
