@@ -58,7 +58,7 @@ class MessageSendAlgorithmWorker
                         # subject, then move on to the next subject's
                         # first lesson
                         if last_lesson_sent.subject_matter.next.present?
-                            logger.info "Starting the next subject on this course for this user"
+                            logger.info "Starting the next subject on this course for this user: #{u.id}"
                             lesson = last_lesson_sent.subject_matter.next.lesson.first_active
                             logger.info "Sending lesson #{lesson.name} for subject: #{lesson.subject_matter.name}"
                                 CalculateLessonTranslationsWorker.perform_async(u.id,lesson.id)
