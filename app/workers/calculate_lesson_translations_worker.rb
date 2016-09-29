@@ -13,6 +13,7 @@ class CalculateLessonTranslationsWorker
                 message << primary.truncate(100)
                 send_with_twilio("+#{user.country.dial_code}#{user.mobile_number}", message)
             end
+            lesson_completion = LessonCompletion.create!(lesson_id: lesson_id, user_id: user_id, subject_matter_id: lesson.subject_matter.id, course_id: lesson.course.id )
         end
     end
     
