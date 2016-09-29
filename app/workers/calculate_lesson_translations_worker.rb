@@ -12,6 +12,7 @@ class CalculateLessonTranslationsWorker
                 message = "Here is your lesson for the day! \n "
                 message << primary.truncate(100)
                 send_with_twilio("+#{user.country.dial_code}#{user.mobile_number}", message)
+            end
         end
     end
     
