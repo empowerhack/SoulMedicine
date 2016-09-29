@@ -1,0 +1,9 @@
+<div class="ui container centered content">
+    <% if @lesson_translations.each do |translation| -%>
+        <div class="ui segment">
+            <div class="ui red label ribbon"><%= translation.language.name %></div>
+            <p class="large text"><%= translation.translation %></p>
+        </div>
+    <% end.empty? -%>
+    <% end -%>
+</div>
