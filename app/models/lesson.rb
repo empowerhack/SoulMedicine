@@ -18,8 +18,16 @@ class Lesson < ActiveRecord::Base
   def load_translations
       langs = Language.all
       langs.each do |l|
-          LessonTranslation.create(lesson_id: self.id, language_id: l.id, translation: " ")
+          LessonTranslation.create(lesson_id: self.id, language_id: l.id, translation: "No Translation Yet.")
       end
+  end
+  
+  def next
+    subject_matter.lesson.where("lessons.order > ?", order).first
+  end
+  
+  def prev
+    subject_matter.lesson.where("lessons.order < ?", order).last
   end
   
 end
