@@ -8,19 +8,19 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Heroku Deploy
 gem 'rails_12factor', group: :production
-gem 'passenger'
+gem 'passenger', group: :production
 
 #### SoulMedicine specific gems ####
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'twilio-ruby'
-gem 'bootstrap-sass'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'sprockets_better_errors'
-gem 'font-awesome-rails'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'

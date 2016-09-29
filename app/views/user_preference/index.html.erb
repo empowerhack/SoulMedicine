@@ -1,67 +1,139 @@
-<h1>Signup!</h1>
-
-<%= form_for(@user_preferences, url: {action: :create}, html: {class: 'form-inline'}) do |f| %>
-		<div class="form-group">
-			<label class="control-label">First Name</label>
-			<%= f.text_field :first_name, class: 'form-control' %>
-		</div>
-		<div class="form-group">
-			<label class="control-label">Last Name</label>
-			<%= f.text_field :last_name, class: 'form-control' %>
-		</div>
-		<div class="form-group">
-			<label class="control-label">Email</label>
-			<%= f.text_field :email, class: 'form-control' %>
-		</div>
-		<div class="form-group">
-			<label class="control-label">Password</label>
-			<%= f.text_field :password, class: 'form-control' %>
-		</div>
-		<div class="form-group">
-			<label class="control-label">Confirm Password</label>
-			<%= f.text_field :password_confirmation, class: 'form-control' %>
-		</div>
-		<div class="form-group">
-			<label>Language</label>
-			<%= collection_select(:language, :id, Language.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Language1</label>
-			<%= collection_select(:language, :id1, Language.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Language2</label>
-			<%= collection_select(:language, :id2, Language.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Gender</label>
-			<%= collection_select(:gender, :id, Gender.where(:is_active => true), :id, :gender, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Country</label>
-			<%= collection_select(:country, :id, Country.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Country1</label>
-			<%= collection_select(:country, :id1, Country.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Country1</label>
-			<%= collection_select(:country, :id1, Country.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
-		</div>
-		<div class="form-group">
-			<label>Consent</label>
-			<%= check_box_tag(:sms, 1, class: "checkbox") %>
-		</div>
-		<div class="form-group">
-			<label>Consent</label>
-			<%= check_box_tag(:consent, true, class: "checkbox") %>
-		</div>
-		<div>
-			<label>Age</label>
-			<%= f.text_field :age, class: 'form-control' %>
-		</div>
-		<div class="form-group">
-			<%= submit_tag("Submit", class: 'btn btn-home') %>
-<% end %>
+<div class="ui middle aligned stackable centered grid">
+	<div class="nine wide column">
+		<h2 class="ui teal icon image header center aligned">
+	      <%= image_tag('logo.png', class: 'ui centered tiny image') %> 
+	      <div class="content">
+	        <%= t('preferences_page.header') %>
+	      </div>
+	    </h2>
+	    <%= form_for(@user_preferences, url: {action: :create}, html: {class: 'ui large form'}) do |f| %>
+	      <div class="ui info icon message">
+	      	<i class="info icon"></i>
+		    <div class="content">
+		    	<div class="header"><%= t('preferences_page.general_information_header') %></div>
+		      	<p><%= t('preferences_page.general_information') %></p>
+		    </div>
+	      </div>
+	      
+	      <h4 class="ui dividing header">Personal Information</h4>
+	      
+		      <div class="field">
+		      	<div class="two fields">
+		      		<div class="field">
+	      				<label>First Name</label>
+		      			<%= f.text_field :first_name, :placeholder => "Optional!" %>
+		      		</div>
+		      		<div class="field">
+		      			<label>Last Name</label>
+		      			<%= f.text_field :last_name, :placeholder => "Optional!" %>
+		      		</div>
+		      	</div>
+		      </div>
+		      
+		      <div class="field">
+		      	<label>Email</label>
+		      	<%= f.email_field :email, :placeholder => "Optional!" %>
+		      </div>
+		      
+		      <div class="three fields">
+		      	<div class="field">
+		      		<label>Age</label>
+		      		<%= f.number_field :age, :placeholder => "Optional!" %>
+		      	</div>
+		      	<div class="field">
+		      		<label>Gender</label>
+		      		<%= collection_select(:gender, :id, Gender.where(:is_active => true), :id, :gender, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      	</div>
+		      	<div class="field">
+		      		<label>Native Language</label>
+		      		<%= collection_select(:native_language, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      	</div>
+		      </div>
+		      
+	      <h4 class="ui dividing header">Service Information</h4>
+	      
+		      <div class="two fields">
+		      	<div class="field">
+		      		<label>Country of Origin</label>
+		      		<%= collection_select(:origin_country, :id, Country.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'search dropdown'}) %>
+		      	</div>
+		      	<div class="field">
+		      		<label>Country of Residence</label>
+		      		<%= collection_select(:country_of_residence, :id, Country.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'search dropdown'}) %>
+		      	</div>
+		      </div>
+	      
+		      <div class="two fields">
+		      	<div class="field">
+		      		<label>Preferred Language</label>
+		      		<%= collection_select(:other_language_one, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      	</div>
+		      	<div class="field">
+		      		<label>Secondary Language</label>
+		      		<%= collection_select(:other_language_two, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      	</div>
+		      </div>
+	      
+		      <div class="three fields">
+		      	<div class="field">
+		      		<label>Primary Message Service</label>
+		      		<%= collection_select(:message_service_one, :id, MessageService.where(:is_active => true), :id, :service, {}, {:class => 'dropdown'}) %>
+		      	</div>
+		      	<div class="field">
+		      		<label>Secondary Message Service</label>
+		      		<%= collection_select(:other_language_two, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown disabled'}) %>
+		      	</div>
+		      	<div class="required field">
+		      		<label>Preferred Delivery Time (GMT)</label>
+		      		<%= select_tag(:delivery_time, options_for_select([["Morning","morning"], ["Afternoon","afternoon"], ["Evening","evening"]]), {:class => 'dropdown', :prompt => "Select A Delivery Time"} ) %>
+		      	</div>
+		      </div>
+		      
+	      <h4 class="ui dividing header">Consent</h4>
+	      
+		      <div class="inline field">
+				<div class="ui checkbox">
+			      	<%= check_box_tag(:consent, 'accepted', false) %>
+			      	<label>I CONSENT to Soul Medicine contacting me by text message, email, or any other form of delivery I have indicated above. I will ensure that I keep the practice informed of my up to date mobile number at all times, or if the number is no longer in my possession.</label>
+				</div>
+		      </div>
+	
+	      <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
+			<i class="sign in icon"></i> Register
+	      <% end %>
+	      
+	      <div class="ui error message"></div>
+	
+	    <% end %>
+	
+	</div>
 </div>
+
+<% content_for :after_body do %>
+	<script>
+		$(document).ready(function() {
+			$('.ui.form').form({
+				fields: {
+					delivery_time: {
+						identifier: "delivery_time",
+						rules: [
+							{
+								type   : 'empty',
+								prompt : 'You must select a delivery time'
+							}
+						]
+					},
+					consent: {
+						identifier: "consent",
+						rules: [
+							{
+								type   : 'checked',
+								prompt : 'You must agree to the consent'
+							}
+						]
+					}
+				}
+			});
+		});
+	</script>
+<% end %>

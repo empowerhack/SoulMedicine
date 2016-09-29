@@ -1,9 +1,11 @@
 # Soul Medicine
 
-Soul Medicine is a free micro learning, SMS based service helping refugees. It is a project that is built in collaboration with Empowerhack and Chayn. Whilst still in development, this repository will change drastically. Feel free to help out by reaching us at `hello<At>soulmedicine.io`
+Soul Medicine is a crowdsourced SMS microeducation platform designed to overcome barriers to traditional learning environments.  We crowdsource community-led content for short, engaging microcourses over SMS in multiple languages.  Our goal is to create a self-sustaining vibrant community around “conversational education” with the tools that enable personal learning and build connections for psychosocial support and inclusion.  We are currently open to both learners and volunteer educators interested in helping us test and improve Soul Medicine, with a closed pilot in human biology, launching October 2016. Feel free to help out by reaching us at `hello<At>soulmedicine.io`
 
 [![Build Status](https://travis-ci.org/empowerhack/SoulMedicine.svg?branch=fahadiqbal1-development)](https://travis-ci.org/empowerhack/SoulMedicine)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=soulmedicine-fi&style=flat)](https://soulmedicine-fi.herokuapp.com/)
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/)    
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php)
 
 ## Contribute to the project
 

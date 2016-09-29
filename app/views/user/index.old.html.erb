@@ -1,0 +1,79 @@
+<div class="container-fluid background-home">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= image_tag('logo.png', class: 'center-block img-responsive logo') %>
+      <div class="text-center">
+        <h1>Soul Medicine</h1>
+        <hr>
+        <h4>Receive personal daily uplifting quotes direct to your phone.
+          Choose from Whatsapp or SMS. </br></br> Sign up below...</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-2 col-md-12 col-xs-12">
+      <%= form_for(@user, url: {action: :send_message}, html: {class: 'form-inline'}) do |f| %>
+          <div class="form-group">
+            <label class="control-label">Country</label>
+            <%= collection_select(:country, :dial_code, Country.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
+          </div>
+          <div class="form-group">
+            <label>Language</label>
+            <%= collection_select(:language, :id, Language.where(:is_active => true), :id, :name, {}, {:class => 'form-control'}) %>
+          </div>
+          <div class="form-group">
+            <label class="control-label"><%= t "home.get_number" %></label>
+            <%= f.text_field :mobile_number, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag("Submit", class: 'btn btn-home') %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--ToDo responsive section messed up -->
+
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="col-sm-4 col-xs-4 ">
+        <i class="fa fa-graduation-cap fa-4x home-icon one-icon-home"></i>
+      </div>
+      <div class="col-sm-6 ">
+        <p class="icon-title-home">Our Courses<br><p>
+        <p class="icon-text-home">asdfadfsadfasdfasdf</p>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="col-sm-4 col-xs-4 ">
+        <i class="fa fa-graduation-cap fa-4x home-icon one-icon-home"></i>
+      </div>
+      <div class="col-sm-6 ">
+        <p class="icon-title-home">Our Courses<br><p>
+        <p class="icon-text-home">asdfadfsadfasdfasdf</p>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="col-sm-4 col-xs-4 ">
+        <i class="fa fa-cogs fa-4x home-icon three-icon-home"></i>
+      </div>
+      <div class="col-sm-6 col-xs-8 ">
+        <p class="icon-title-home">They WayWorks<br><p>
+        <p class="icon-text-home">asdfadfsadfasdfasdf</p>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <div class="col-sm-4 col-xs-4 ">
+        <i class="fa fa-check-circle-o fa-4x home-icon four-icon-home"></i>
+      </div>
+      <div class="col-sm-6 col-xs-8 ">
+        <p class="icon-title-home">Sign Up<br><p>
+        <p class="icon-text-home">asdfadfsadfasdfasdf</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
