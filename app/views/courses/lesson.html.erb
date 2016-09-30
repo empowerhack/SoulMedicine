@@ -2,7 +2,7 @@
     <% if @lesson_translations.each do |translation| -%>
         <div class="ui segment">
             <div class="ui red label ribbon"><%= translation.language.name %></div>
-            <p class="large text"><%= translation.translation %></p>
+            <div class="large text"><%= raw translation.translation %></div>
         </div>
     <% end.empty? -%>
     <% end -%>

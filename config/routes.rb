@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # mount Ckeditor::Engine => '/ckeditor'
   get 'sessions/new'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     get '/logout' => 'sessions#destroy'
     match ':controller(/:action(/:id))', :via => [:get, :post, :patch]
   end
+  
 
 
 end

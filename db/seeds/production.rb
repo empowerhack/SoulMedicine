@@ -100,3 +100,4 @@ Course.create!(name: "Biology", description: "The Biology course is designed to 
     Lesson.create!(subject_matter_id: SubjectMatter.where(:name => 'Circulation / heart').first.id, name: 'Day 82', order: '5')
     Lesson.create!(subject_matter_id: SubjectMatter.where(:name => 'Circulation / heart').first.id, name: 'Day 83', order: '6')
     Lesson.create!(subject_matter_id: SubjectMatter.where(:name => 'Circulation / heart').first.id, name: 'Day 84', order: '7')
+    

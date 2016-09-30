@@ -25,6 +25,7 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_admin_theme'
+gem 'ckeditor'
 gem 'sidekiq'
 # gem 'sidetiq'
 gem 'sinatra', :require => false
