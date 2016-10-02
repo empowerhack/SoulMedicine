@@ -17,10 +17,11 @@ class MessengerController < ApplicationController
     if TwilioService.new({ to: "+#{@country.dial_code}#{@mobile_num}" }).valid?
       if @user.save
   	    @pin = @user.pin
-  
+        @url = ENV["BASE_URL"]
+        @message = "Welcome to Soul Medicine! To verify your account, please input this PIN: #{@pin} here: #{@url}pin"
   		    send_with_twilio(
             "+#{@country.dial_code}#{@mobile_num}",
-            "You did it! Now to receive and save all this info #{@pin}"
+            @message
           )
   		    flash[:notice] = 'Check your phone'
   	      session[:user_id] = @user.id
