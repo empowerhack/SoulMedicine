@@ -11,8 +11,34 @@
  * file per style scope.
  *= require_tree .
  *= require_self
+
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "loggedOut";
-@import "font-awesome"
+@import "semantic-ui";
+
+.pusher {
+    min-height: 100vh;
+}
+
+.large.text {
+   font-size: 2rem;
+}
+
+.ui {
+    .mobile-menu {
+        margin-top: 1rem !important;
+    }
+    &.content > .segment {
+        &:last-child {
+            margin-bottom: 2em;
+        }
+
+        &:first-child {
+            margin-top: 2em;
+        }
+        
+        > .section-text {
+            font-size: larger;
+            margin: auto auto auto 1em;
+        }
+    }
+}

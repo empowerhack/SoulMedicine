@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%=ENV['SOULMEDICINE_DATABASE_NAME']%>
+  database: <%=ENV['SOULMEDICINE_DATABASE_NAME']%>_development
   username: <%=ENV['SOULMEDICINE_DATABASE_USER']%>
   password: <%=ENV['SOULMEDICINE_DATABASE_PASSWORD']%>
   host: <%=ENV['SOULMEDICINE_DATABASE_HOST']%>

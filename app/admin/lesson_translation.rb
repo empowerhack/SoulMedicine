@@ -25,6 +25,18 @@ ActiveAdmin.register LessonTranslation do
         column :is_approved
         actions
     end
+    
+    form do |f|
+        f.semantic_errors *f.object.errors.keys
+        f.inputs do
+            f.input :language, :input_html => { :disabled => true } 
+            f.input :translation, :as => :ckeditor
+            if ['admin', 'superuser', 'courseuser'].include? current_admin_user.role
+                f.input :is_approved
+            end
+        end
+        f.actions
+    end
 
 #
 # permit_params do

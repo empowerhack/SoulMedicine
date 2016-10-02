@@ -6,6 +6,9 @@ class Course < ActiveRecord::Base
     def first_active
       where(:is_active => true).order(order: :asc).first
     end
+    def last_active
+      where(:is_active => true).order(order: :desc).first
+    end
   end
   has_many :lessons, :through => :subject_matters do
     def approved

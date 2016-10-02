@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
 
-	layout 'logged_out'
+	layout 'site_base'
+  
+	def index
+	end
 
 	def show
 		if valid_page?

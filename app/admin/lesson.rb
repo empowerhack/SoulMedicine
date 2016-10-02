@@ -77,7 +77,7 @@ ActiveAdmin.register Lesson do
                 tab "Translations" do
                     f.has_many :lesson_translation, heading: false, allow_destroy: false, new_record: false do |lt|
                         lt.input :language, :input_html => { :disabled => true } 
-                        lt.input :translation
+                        lt.input :translation, :as => :ckeditor
                         if ['admin', 'superuser', 'courseuser'].include? current_admin_user.role
                             lt.input :is_approved
                         end

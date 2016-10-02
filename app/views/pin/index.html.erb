@@ -1,27 +1,84 @@
-<div class="container">
-	<div class="row pin">
-		<div class="col-xs-12 col-lg-6 col-lg-offset-3">
-			<div class="panel panel-default">
-				<div class="panel-heading" id="panel-background">Get Started By Entering Your Pin!</div>
-					<%= form_tag(action: :verify, role: 'form')%>
-						<div class="row">
-							<div class="form-group col-xs-10 col-xs-offset-1">
-								<label for="email">Mobile Number:</label>
-								<%= text_field(@mobile_num, :mobile_number, placeholder: "Mobile Number", class: "form-control input-normal") %>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group col-xs-10 col-xs-offset-1">
-								<label for="pwd">Pin</label>
-								<%= text_field(@pin, :pin, placeholder: "Pin", class: "form-control input-normal") %>
-							</div>
-						</div>
-					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1">
-						<%= submit_tag("Submit", class: "btn btn-primary btn-md btn-block") %>
-						</div>
-					</div>
-			</div>
-		</div>
+<div class="ui middle aligned center aligned stackable grid three columns">
+	<div class="column"></div>
+	<div class="column">
+		<h2 class="ui teal icon image header">
+	      <%= image_tag('logo.png', class: 'ui centered tiny image') %> 
+	      <div class="content">
+	        <%= t('verify_pin_page.header') %>
+	      </div>
+	    </h2>
+	    <%= form_tag({:action => 'verify'}, {:class => 'ui large form'}) do %>
+	      <div class="ui stacked segment">
+	        <div class="fluid field">
+	          <div class="ui left icon input">
+	            <i class="mobile icon"></i>
+	            <%= text_field_tag :mobile_number, nil, :placeholder => t('verify_pin_page.form.mobile_number') %>
+	          </div>
+	        </div>
+	        <div class="field">
+	          <div class="ui left icon input">
+	            <i class="asterisk icon"></i>
+	            <%= text_field_tag :pin, nil, :placeholder => t('verify_pin_page.form.pin') %>
+	          </div>
+	        </div>
+	        <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
+				<i class="sign in icon"></i> <%= t('site.sign_in') %>
+			<% end %>
+	      </div>
+	
+	      <div class="ui error message"></div>
+	
+	    <% end %>
+	
+	    <div class="ui message">
+	      New to us? <a href="#">Sign Up</a> <br/>
+	      Having Issues with your PIN? <a hreg="#">Contact Us</a>
+	    </div>
 	</div>
+	<div class="column"></div>
 </div>
+
+<% content_for :after_body do %>
+	<script>
+		$(document).ready(function() {
+			$('.ui.form').form({
+				fields: {
+					email: {
+						identifier  : 'mobile_number',
+						rules: [
+							{
+								type   : 'empty',
+								prompt : '<%= t('sign_in_page.form.validations.phone_empty') %>'
+							},
+							{
+								type   : 'integer[1..999999999999]',
+								prompt : '<%= t('sign_in_page.form.validations.phone_invalid_number') %>'
+							},
+							{
+								type   : 'minLength[7]',
+								prompt : '<%= t('sign_in_page.form.validations.phone_invalid_number') %>'
+							}
+						]
+					},
+					password: {
+						identifier  : 'pin',
+						rules: [
+							{
+								type   : 'empty',
+								prompt : '<%= t('verify_pin_page.form.validations.pin_empty') %>'
+							},
+							{
+								type   : 'length[5]',
+								prompt : '<%= t('verify_pin_page.form.validations.pin_length') %>'
+							},
+							{
+								type   : 'integer[1..99999]',
+								prompt : '<%= t('verify_pin_page.form.validations.pin_invalid') %>'
+							}
+						]
+					}
+				}
+			});
+		});
+	</script>
+<% end %>
