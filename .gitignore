@@ -13,8 +13,12 @@
 /tmp
 .idea/*
 LICENSE
-config/database.yml
-config/secrets.yml
+# config/database.yml
+# config/secrets.yml
 .vscode
 .vagrant
 cookbooks
+*.env
+.c9
+passenger.*.lock
+.sprockets-manifest*.json

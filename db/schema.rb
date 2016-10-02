@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519103106) do
+ActiveRecord::Schema.define(version: 20160930102304) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 20160519103106) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.string   "data_fingerprint",  limit: 255
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "iso_code",   limit: 255
@@ -80,13 +97,17 @@ ActiveRecord::Schema.define(version: 20160519103106) do
   end
 
   create_table "lesson_completions", force: :cascade do |t|
-    t.integer  "lesson_id",  limit: 4
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "lesson_id",         limit: 4
+    t.integer  "user_id",           limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "subject_matter_id", limit: 4
+    t.integer  "course_id",         limit: 4
   end
 
+  add_index "lesson_completions", ["course_id"], name: "fk_rails_b5a8fc7814", using: :btree
   add_index "lesson_completions", ["lesson_id"], name: "index_lesson_completions_on_lesson_id", using: :btree
+  add_index "lesson_completions", ["subject_matter_id"], name: "fk_rails_4a0a7e53f9", using: :btree
   add_index "lesson_completions", ["user_id"], name: "index_lesson_completions_on_user_id", using: :btree
 
   create_table "lesson_translations", force: :cascade do |t|
@@ -130,24 +151,36 @@ ActiveRecord::Schema.define(version: 20160519103106) do
 
   add_index "subject_matters", ["course_id"], name: "index_subject_matters_on_course_id", using: :btree
 
+  create_table "user_courses", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "course_id",   limit: 4
+    t.boolean  "is_complete",           default: false, null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id", using: :btree
+  add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id", using: :btree
+
   create_table "user_preferences", force: :cascade do |t|
-    t.integer  "user_id",                 limit: 4,                   null: false
-    t.integer  "gender_id",               limit: 4,   default: 3,     null: false
-    t.integer  "native_language_id",      limit: 4,                   null: false
+    t.integer  "user_id",                 limit: 4,                       null: false
+    t.integer  "gender_id",               limit: 4,   default: 3
+    t.integer  "native_language_id",      limit: 4
     t.integer  "other_language_one_id",   limit: 4
     t.integer  "other_language_two_id",   limit: 4
-    t.integer  "origin_country_id",       limit: 4,                   null: false
+    t.integer  "origin_country_id",       limit: 4
     t.integer  "country_of_residence_id", limit: 4
-    t.boolean  "consent",                             default: false, null: false
+    t.boolean  "consent",                             default: false,     null: false
     t.date     "age"
-    t.integer  "message_service_one_id",  limit: 4,   default: 1,     null: false
+    t.integer  "message_service_one_id",  limit: 4,   default: 1
     t.integer  "message_service_two_id",  limit: 4
     t.string   "first_name",              limit: 255
     t.string   "last_name",               limit: 255
     t.string   "email",                   limit: 255
     t.string   "password_digest",         limit: 255
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.string   "delivery_time",           limit: 255, default: "morning"
   end
 
   add_index "user_preferences", ["country_of_residence_id"], name: "index_user_preferences_on_country_of_residence_id", using: :btree
@@ -162,17 +195,21 @@ ActiveRecord::Schema.define(version: 20160519103106) do
   create_table "users", force: :cascade do |t|
     t.integer  "mobile_number", limit: 8
     t.string   "pin",           limit: 255
-    t.boolean  "verified"
+    t.boolean  "verified",                  default: false
     t.integer  "country_id",    limit: 4
     t.integer  "language_id",   limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "users", ["country_id", "language_id"], name: "index_users_on_country_id_and_language_id", using: :btree
 
+  add_foreign_key "lesson_completions", "courses"
   add_foreign_key "lesson_completions", "lessons"
+  add_foreign_key "lesson_completions", "subject_matters"
   add_foreign_key "lesson_completions", "users"
   add_foreign_key "lessons", "subject_matters"
   add_foreign_key "subject_matters", "courses"
+  add_foreign_key "user_courses", "courses"
+  add_foreign_key "user_courses", "users"
 end

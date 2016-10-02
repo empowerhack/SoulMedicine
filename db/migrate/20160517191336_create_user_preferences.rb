@@ -2,20 +2,20 @@ class CreateUserPreferences < ActiveRecord::Migration
   def change
     create_table :user_preferences do |t|
       t.references :user, null: false
-      t.references :gender, null: false , default: 3
-      t.references :native_language, null: false
-      t.references :other_language_one
-      t.references :other_language_two
-      t.references :origin_country, null: false
-      t.references :country_of_residence
+      t.references :gender, null: true , default: 3
+      t.references :native_language, null: true
+      t.references :other_language_one, null: true
+      t.references :other_language_two, null: true
+      t.references :origin_country, null: true
+      t.references :country_of_residence, null: true
       t.boolean :consent, null: false, default: false
-      t.date :age
-      t.references :message_service_one, null: false, default: 1
-      t.references :message_service_two
-      t.string :first_name
-      t.string :last_name
-      t.string :email
-      t.string :password_digest
+      t.date :age, null: true
+      t.references :message_service_one, null: true, default: 1
+      t.references :message_service_two, null: true
+      t.string :first_name, null: true
+      t.string :last_name, null: true
+      t.string :email, null: true
+      t.string :password_digest, null: true
       t.timestamps null: false
     end
     add_index :user_preferences, ['user_id', 'gender_id']

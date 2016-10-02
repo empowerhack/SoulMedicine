@@ -11,20 +11,28 @@ class MessengerController < ApplicationController
     @language = Language.find(params[:language][:id])
       @user.language_id = @language.id
     @mobile_num = @user.mobile_number
-
-    if @user.save
-	    @pin = @user.pin
-
-		    send_with_twilio(
-          "+#{@country.dial_code}#{@mobile_num}",
-          "You did it! Now to receive and save all this info #{@pin}"
-        )
-		    flash[:notice] = 'Check your phone'
-	      session[:user_id] = @user.id
-	      redirect_to(controller: 'pin', action: 'index')
+    
+    @valid_number = TwilioService.new({ to: "+#{@country.dial_code}#{@mobile_num}" }).valid?
+    
+    if TwilioService.new({ to: "+#{@country.dial_code}#{@mobile_num}" }).valid?
+      if @user.save
+  	    @pin = @user.pin
+        @url = ENV["BASE_URL"]
+        @message = "Welcome to Soul Medicine! To verify your account, please input this PIN: #{@pin} here: #{@url}pin"
+  		    send_with_twilio(
+            "+#{@country.dial_code}#{@mobile_num}",
+            @message
+          )
+  		    flash[:notice] = 'Check your phone'
+  	      session[:user_id] = @user.id
+  	      redirect_to(controller: 'pin', action: 'index')
+      else
+  			flash[:error] = @user.errors.full_messages
+  			render 'user/index'
+      end
     else
-			flash[:error] = @user.errors.full_messages
-			render 'user/index'
+      flash[:error] = "You have entered an invalid phone number"
+  		render 'user/index'
     end
 
   end

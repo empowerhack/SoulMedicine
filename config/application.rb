@@ -6,7 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
 module SoulMedicine
   extend Econfig::Shortcut
   class Application < Rails::Application
