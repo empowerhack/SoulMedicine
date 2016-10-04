@@ -26,16 +26,16 @@ class MessageSendAlgorithmWorker
             logger.info "Finding User's courses"
             user_courses = findUserActiveCourse(u.id) # Get the Course(s) that the user is subscribed to(returns array)
             user_courses.each do |uc|
-                logger.info "Course found. Course_id: #{uc.id}"
+                logger.info "Course found. Course_id: #{uc.course_id}"
                 logger.info "Finding lessons that the user has completed for this course"
-                user_lesson_completions = findUserLessonCompletions(u.id, uc.id) #Get the Lessons that the user has completed
+                user_lesson_completions = findUserLessonCompletions(u.id, uc.course_id) #Get the Lessons that the user has completed
                 # If the User has not yet started on the course,
                 # then send the first lesson of the first
                 # subject on that course
                 if user_lesson_completions.empty?
                     logger.info "User has not completed any lessons for this course"
                     logger.info "Sending the first lesson of the first subject"
-                    subject_matter = Course.find(uc.id).subject_matters.first_active
+                    subject_matter = Course.find(uc.course_id).subject_matters.first_active
                         if subject_matter.present?
                             lesson = SubjectMatter.find(subject_matter.id).lesson.first_active
                             logger.info "Sending lesson #{lesson.name} for subject: #{lesson.subject_matter.name}"
@@ -44,7 +44,7 @@ class MessageSendAlgorithmWorker
                             logger.info "There are no subjects assigned to this course"
                         end
                 else
-                    last_lesson_sent = LessonCompletion.where(:user_id => u.id, :course_id => uc.id).order('created_at desc').first
+                    last_lesson_sent = LessonCompletion.where(:user_id => u.id, :course_id => uc.course_id).order('created_at desc').first
                     # If the last lesson that was sent is not the last 
                     # lesson in the subject, then send the next
                     # lesson, otherwise proceed to next check
