@@ -46,10 +46,36 @@ class UserPreferenceController < ApplicationController
 			completed = true
 		end
 		if completed
-			redirect_to controller: 'user_preference', action: 'index'
+			redirect_to controller: 'user_preference', action: 'courses'
 		else 
 			render :action => :index 
 		end
+	end
+	
+	def courses
+		@user_id = cookies[:current_user_id]
+		@user = User.find(@user_id)
+		@courses = Course.where(:is_active => true)
+	end
+	
+	def save_courses
+		@user_id = cookies[:current_user_id]
+		@user = User.find(@user_id)
+		# debugger
+		selected_courses = params[:user]['course_ids'].reject!(&:empty?)
+		UserCourse.where(user_id: @user.id).where.not(course_id: selected_courses).each do |d|
+			d.destroy
+		end
+		
+		selected_courses.each do |c|
+			if !c.empty?
+				@course = Course.find(c)
+				user_course = UserCourse.where(user_id: @user.id, course_id: @course.id).first_or_create
+			end
+		end
+		
+		redirect_to controller: 'user_preference', action: 'courses'
+		
 	end
 
 	private
