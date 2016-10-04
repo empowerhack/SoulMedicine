@@ -22,3 +22,4 @@ cookbooks
 .c9
 passenger.*.lock
 .sprockets-manifest*.json
+.byebug_*

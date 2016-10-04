@@ -1,0 +1,22 @@
+<div class="ui middle aligned stackable centered grid">
+	<div class="nine wide column">
+		<h2 class="ui teal icon image header center aligned">
+	      <%= image_tag('logo.png', class: 'ui centered tiny image') %> 
+	      <div class="content">
+	        <%= t('course_selection_page.header') %>
+	      </div>
+	    </h2>
+	    <%= form_for(@user, url: {action: :save_courses}, html: {class: 'ui large form'}) do |f| %>
+	      
+			<div class="inline field">
+				<%= f.select :course_ids, @courses.collect {|x| [x.name, x.id]}, {}, {:class => 'ui dropdown', :multiple => true, :id => "user_course_ids"} %>
+			</div>
+	
+	      <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
+			<i class="save icon"></i> <%= t('course_selection_page.save_button') %>
+	      <% end %>
+	
+	    <% end %>
+	
+	</div>
+</div>

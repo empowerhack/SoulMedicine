@@ -19,6 +19,7 @@ fr:
       native_language_label: Votre langue maternelle
       native_language_placeholder: S'il vous plaît sélectionnez votre langue maternelle
       mobile_number_label: Ton numéro de téléphone
+      mobile_number_placeholder: Nombre sans code de pays
       sign_up_button: S'inscrire
   sign_in_page:
     header: Connectez-vous à votre compte
@@ -60,3 +61,11 @@ fr:
     like_what_you_see: Like what you see?
     like_what_you_see_paragraph: |
       We’re looking for volunteers and ambassadors who can help us build more courses, translate texts and help us spread the word about our service. Interested? Send an email to team@soulmedicine.io.
+  preferences_page:
+    header: Register Your Account
+    general_information_header: General Information
+    general_information: The information gathered in this form is not shared with any external entity. Aside from a few fields, everything noted below is optional
+  course_selection_page:
+    header: Choose Your Courses
+    save_button: Save Choices
+    

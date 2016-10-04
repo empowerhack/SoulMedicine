@@ -3,48 +3,95 @@ class UserPreferenceController < ApplicationController
 	layout 'site_base'
 	
 	def index
-		# if cookies[:current_user_id]
-			@user_preferences = UserPreference.new
-		# else
-		# 	redirect_to controller: 'user', action: 'index'
-		# end
+		if cookies[:current_user_id]
+			@user_id = cookies[:current_user_id]
+			@user_preferences = UserPreference.find_by(user_id: @user_id)
+		else
+			redirect_to controller: 'user', action: 'index'
+		end
 	end
 
 	def create
-		@gender = Gender.find(params[:gender][:id])
-		@native = Language.find(params[:language][:id])
-		@other_lang_one = Language.find(params[:language][:id1])
-		@other_lang_two = Language.find(params[:language][:id2])
-		@origin = Country.find(params[:country][:id])
-		@residence = Country.find(params[:country][:id1])
-		@user_preferences = UserPreference.new(user_preference_params)
-		@user_preferences.user_id = cookies[:current_user_id]
-		@user_preferences.gender_id = @gender.id
-		@user_preferences.native_language_id = @native.id
-		@user_preferences.other_language_one_id = @other_lang_one.id
-		@user_preferences.other_language_two_id = @other_lang_two.id
-		@user_preferences.origin_country_id = @origin.id
-		@user_preferences.country_of_residence_id = @residence.id
-		@user_preferences.consent = params[:consent]
-		@user_preferences.age = params[:age]
-		@user_preferences.message_service_one_id = params[:sms]
-		@user_preferences.message_service_two_id = params[:email]
-		@user_preferences.first_name = params[:first_name]
-		@user_preferences.last_name = params[:last_name]
-		@user_preferences.email = params[:email]
-		@user_preferences.password = 'hello'
-		@user_preferences.password_confirmation = 'hello'
-
-		@user_preferences.save!
-			redirect_to controller: 'user', action: 'index'
+		redirect_to controller: 'user', action: 'index'
+	end
+	
+	def update
+		@user_id = cookies[:current_user_id]
+		@user_preferences = UserPreference.find_by(user_id: @user_id)
+    	# debugger
+		
+		@gender = params[:user_preference][:gender_attributes].present? ? Gender.find(params[:user_preference][:gender_attributes][:id]).id : 3
+		@native = params[:user_preference][:native_language_attributes][:id].present? && !params[:user_preference][:native_language_attributes][:id].empty? ? Language.find(params[:user_preference][:native_language_attributes][:id]).id : nil
+		@other_lang_one = params[:user_preference][:other_language_one_attributes][:id].present? && !params[:user_preference][:other_language_one_attributes][:id].empty? ? Language.find(params[:user_preference][:other_language_one_attributes][:id]).id : nil
+		@other_lang_two = params[:user_preference][:other_language_two_attributes][:id].present? && !params[:user_preference][:other_language_two_attributes][:id].empty? ? Language.find(params[:user_preference][:other_language_two_attributes][:id]).id : nil
+		@origin = params[:user_preference][:origin_country_attributes][:id].present? && !params[:user_preference][:origin_country_attributes][:id].empty? ? Country.find(params[:user_preference][:origin_country_attributes][:id]).id : nil
+		@residence = params[:user_preference][:country_of_residence_attributes][:id].present? && !params[:user_preference][:country_of_residence_attributes][:id].empty? ? Country.find(params[:user_preference][:country_of_residence_attributes][:id]).id : nil
+		
+		completed = false
+		UserPreference.transaction do
+			@user_preferences.gender_id = @gender
+			@user_preferences.native_language_id = @native
+			@user_preferences.other_language_one_id = @other_lang_one
+			@user_preferences.other_language_two_id = @other_lang_two
+			@user_preferences.origin_country_id = @origin
+			@user_preferences.country_of_residence_id = @residence
+			
+			@user_preferences.consent = params[:user_preference][:consent]
+			@user_preferences.age = params[:user_preference][:age]
+			@user_preferences.first_name = params[:user_preference][:first_name]
+			@user_preferences.last_name = params[:user_preference][:last_name]
+			@user_preferences.email = params[:user_preference][:email]
+			@user_preferences.delivery_time = params[:user_preference][:delivery_time]
+			@user_preferences.save!
+			completed = true
+		end
+		if completed
+			flash[:success] = 'Account Preferences Saved!'
+			redirect_to controller: 'user_preference', action: 'courses'
+		else 
+			redirect_to controller: 'user_preference', action: 'index'
+		end
+	end
+	
+	def courses
+		@user_id = cookies[:current_user_id]
+		@user = User.find(@user_id)
+		@courses = Course.where(:is_active => true)
+	end
+	
+	def save_courses
+		@user_id = cookies[:current_user_id]
+		@user = User.find(@user_id)
+		# debugger
+		selected_courses = params[:user]['course_ids'].reject!(&:empty?)
+		UserCourse.where(user_id: @user.id).where.not(course_id: selected_courses).each do |d|
+			d.destroy
+		end
+		
+		selected_courses.each do |c|
+			if !c.empty?
+				@course = Course.find(c)
+				user_course = UserCourse.where(user_id: @user.id, course_id: @course.id).first_or_create
+			end
+		end
+		
+		flash[:success] = 'Course selection saved!'
+		redirect_to controller: 'courses', action: 'index'
+		
 	end
 
 	private
 
 	def user_preference_params
-		params.require(:user_preference).permit(:user_id, :gender_id, :native_language_id, :other_language_one_id,
-		:other_language_two_id, :origin_country_id, :country_of_residence_id, :consent, :age, :message_service_one_id,
-		:message_service_two_id, :first_name, :last_name, :email, :password, :password_confirmation)
+		params.require(:user_preference).permit(
+			:user_id,
+			:delivery_time, 
+			:consent, 
+			:age, 
+			:first_name, 
+			:last_name, 
+			:email, 
+			:password_digest)
 	end
 
 end

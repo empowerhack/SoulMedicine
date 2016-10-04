@@ -6,7 +6,7 @@
 	        <%= t('preferences_page.header') %>
 	      </div>
 	    </h2>
-	    <%= form_for(@user_preferences, url: {action: :create}, html: {class: 'ui large form'}) do |f| %>
+	    <%= form_for(@user_preferences, url: {action: :update}, html: {class: 'ui large form'}) do |f| %>
 	      <div class="ui info icon message">
 	      	<i class="info icon"></i>
 		    <div class="content">
@@ -14,6 +14,8 @@
 		      	<p><%= t('preferences_page.general_information') %></p>
 		    </div>
 	      </div>
+	      
+	      <div class="ui error message"></div>
 	      
 	      <h4 class="ui dividing header">Personal Information</h4>
 	      
@@ -42,11 +44,17 @@
 		      	</div>
 		      	<div class="field">
 		      		<label>Gender</label>
-		      		<%= collection_select(:gender, :id, Gender.where(:is_active => true), :id, :gender, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      		<% @user_preferences.build_gender unless @user_preferences.gender %>
+		      		<%= f.fields_for :gender do |g| %>
+		      			<%= g.select :id, Gender.where(:is_active => true).collect { |p| [ p.gender, p.id ] }, { :include_blank => "Optional!" }, {:class => 'dropdown', :prompt => "Optional!"} %>
+		      		<% end %>
 		      	</div>
 		      	<div class="field">
 		      		<label>Native Language</label>
-		      		<%= collection_select(:native_language, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      		<% @user_preferences.build_native_language unless @user_preferences.native_language %>
+		      		<%= f.fields_for :native_language do |g| %>
+		      			<%= g.select :id, Language.where(:is_active => true).collect { |p| [ p.name, p.id ] }, { :include_blank => "Optional!" }, {:class => 'dropdown', :prompt => "Optional!"} %>
+		      		<% end %>
 		      	</div>
 		      </div>
 		      
@@ -55,22 +63,34 @@
 		      <div class="two fields">
 		      	<div class="field">
 		      		<label>Country of Origin</label>
-		      		<%= collection_select(:origin_country, :id, Country.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'search dropdown'}) %>
+		      		<% @user_preferences.build_origin_country unless @user_preferences.origin_country %>
+		      		<%= f.fields_for :origin_country do |g| %>
+		      			<%= g.select :id, Country.where(:is_active => true).collect { |p| [ p.name, p.id ] }, { :include_blank => "Optional!" }, {:class => 'dropdown search', :prompt => "Optional!"} %>
+		      		<% end %>
 		      	</div>
 		      	<div class="field">
 		      		<label>Country of Residence</label>
-		      		<%= collection_select(:country_of_residence, :id, Country.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'search dropdown'}) %>
+		      		<% @user_preferences.build_country_of_residence unless @user_preferences.country_of_residence %>
+		      		<%= f.fields_for :country_of_residence do |g| %>
+		      			<%= g.select :id, Country.where(:is_active => true).collect { |p| [ p.name, p.id ] }, { :include_blank => "Optional!" }, {:class => 'dropdown search', :prompt => "Optional!"} %>
+		      		<% end %>
 		      	</div>
 		      </div>
 	      
 		      <div class="two fields">
 		      	<div class="field">
 		      		<label>Preferred Language</label>
-		      		<%= collection_select(:other_language_one, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      		<% @user_preferences.build_other_language_one unless @user_preferences.other_language_one %>
+		      		<%= f.fields_for :other_language_one do |g| %>
+		      			<%= g.select :id, Language.where(:is_active => true).collect { |p| [ p.name, p.id ] }, { :include_blank => "Optional!" }, {:class => 'dropdown', :prompt => "Optional!"} %>
+		      		<% end %>
 		      	</div>
 		      	<div class="field">
 		      		<label>Secondary Language</label>
-		      		<%= collection_select(:other_language_two, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown'}) %>
+		      		<% @user_preferences.build_other_language_two unless @user_preferences.other_language_two %>
+		      		<%= f.fields_for :other_language_two do |g| %>
+		      			<%= g.select :id, Language.where(:is_active => true).collect { |p| [ p.name, p.id ] }, { :include_blank => "Optional!" }, {:class => 'dropdown', :prompt => "Optional!"} %>
+		      		<% end %>
 		      	</div>
 		      </div>
 	      
@@ -81,11 +101,11 @@
 		      	</div>
 		      	<div class="field">
 		      		<label>Secondary Message Service</label>
-		      		<%= collection_select(:other_language_two, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown disabled'}) %>
+		      		<%= collection_select(:message_service_two, :id, Language.where(:is_active => true), :id, :name, {:prompt => "Optional!"}, {:class => 'dropdown disabled'}) %>
 		      	</div>
 		      	<div class="required field">
 		      		<label>Preferred Delivery Time (GMT)</label>
-		      		<%= select_tag(:delivery_time, options_for_select([["Morning","morning"], ["Afternoon","afternoon"], ["Evening","evening"]]), {:class => 'dropdown', :prompt => "Select A Delivery Time"} ) %>
+		      		<%= f.select :delivery_time, options_for_select([["Morning","morning"], ["Afternoon","afternoon"], ["Evening","evening"]]), { include_blank: true }, {:class => 'dropdown', :prompt => "Select A Delivery Time"} %>
 		      	</div>
 		      </div>
 		      
@@ -93,7 +113,7 @@
 	      
 		      <div class="inline field">
 				<div class="ui checkbox">
-			      	<%= check_box_tag(:consent, 'accepted', false) %>
+			      	<%= f.check_box :consent %>
 			      	<label>I CONSENT to Soul Medicine contacting me by text message, email, or any other form of delivery I have indicated above. I will ensure that I keep the practice informed of my up to date mobile number at all times, or if the number is no longer in my possession.</label>
 				</div>
 		      </div>
@@ -101,8 +121,6 @@
 	      <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
 			<i class="sign in icon"></i> Register
 	      <% end %>
-	      
-	      <div class="ui error message"></div>
 	
 	    <% end %>
 	
@@ -115,7 +133,7 @@
 			$('.ui.form').form({
 				fields: {
 					delivery_time: {
-						identifier: "delivery_time",
+						identifier: "user_preference_delivery_time",
 						rules: [
 							{
 								type   : 'empty',
@@ -124,7 +142,7 @@
 						]
 					},
 					consent: {
-						identifier: "consent",
+						identifier: "user_preference_consent",
 						rules: [
 							{
 								type   : 'checked',
