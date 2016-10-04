@@ -19,6 +19,7 @@ en:
       native_language_label: Your Native Language
       native_language_placeholder: Please select your native language
       mobile_number_label: Your Mobile Number
+      mobile_number_placeholder: Number without country code
       sign_up_button: Sign Up
   sign_in_page:
     header: Log-in to your account

@@ -19,6 +19,7 @@ ar:
       native_language_label: اللغة الأصلية الخاصة بك
       native_language_placeholder: الرجاء اختيار لغتك الأم
       mobile_number_label: رقم هاتفك
+      mobile_number_placeholder: الرقم بدون رمز البلد
       sign_up_button: سجل
   sign_in_page:
     header: تسجيل الدخول إلى حسابك

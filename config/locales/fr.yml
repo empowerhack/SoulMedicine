@@ -19,6 +19,7 @@ fr:
       native_language_label: Votre langue maternelle
       native_language_placeholder: S'il vous plaît sélectionnez votre langue maternelle
       mobile_number_label: Ton numéro de téléphone
+      mobile_number_placeholder: Nombre sans code de pays
       sign_up_button: S'inscrire
   sign_in_page:
     header: Connectez-vous à votre compte
