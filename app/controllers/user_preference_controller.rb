@@ -46,9 +46,10 @@ class UserPreferenceController < ApplicationController
 			completed = true
 		end
 		if completed
+			flash[:success] = 'Account Preferences Saved!'
 			redirect_to controller: 'user_preference', action: 'courses'
 		else 
-			render :action => :index 
+			redirect_to controller: 'user_preference', action: 'index'
 		end
 	end
 	
@@ -74,7 +75,8 @@ class UserPreferenceController < ApplicationController
 			end
 		end
 		
-		redirect_to controller: 'user_preference', action: 'courses'
+		flash[:success] = 'Course selection saved!'
+		redirect_to controller: 'courses', action: 'index'
 		
 	end
 

@@ -3,52 +3,20 @@
 		<h2 class="ui teal icon image header center aligned">
 	      <%= image_tag('logo.png', class: 'ui centered tiny image') %> 
 	      <div class="content">
-	        <%= t('preferences_page.header') %>
+	        <%= t('course_selection_page.header') %>
 	      </div>
 	    </h2>
 	    <%= form_for(@user, url: {action: :save_courses}, html: {class: 'ui large form'}) do |f| %>
 	      
-	      <h4 class="ui dividing header">Choose Your Courses</h4>
 			<div class="inline field">
 				<%= f.select :course_ids, @courses.collect {|x| [x.name, x.id]}, {}, {:class => 'ui dropdown', :multiple => true, :id => "user_course_ids"} %>
 			</div>
 	
 	      <%= button_tag(type: "submit", class: "ui fluid large teal submit button") do %>
-			<i class="sign in icon"></i> Register
+			<i class="save icon"></i> <%= t('course_selection_page.save_button') %>
 	      <% end %>
-	      
-	      <div class="ui error message"></div>
 	
 	    <% end %>
 	
 	</div>
 </div>
-
-<% content_for :after_body do %>
-	<script>
-		$(document).ready(function() {
-			$('.ui.form').form({
-				fields: {
-					delivery_time: {
-						identifier: "user_preference_delivery_time",
-						rules: [
-							{
-								type   : 'empty',
-								prompt : 'You must select a delivery time'
-							}
-						]
-					},
-					consent: {
-						identifier: "user_preference_consent",
-						rules: [
-							{
-								type   : 'checked',
-								prompt : 'You must agree to the consent'
-							}
-						]
-					}
-				}
-			});
-		});
-	</script>
-<% end %>

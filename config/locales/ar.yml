@@ -61,3 +61,11 @@ ar:
     like_what_you_see: Like what you see?
     like_what_you_see_paragraph: |
       We’re looking for volunteers and ambassadors who can help us build more courses, translate texts and help us spread the word about our service. Interested? Send an email to team@soulmedicine.io.
+  preferences_page:
+    header: Register Your Account
+    general_information_header: General Information
+    general_information: The information gathered in this form is not shared with any external entity. Aside from a few fields, everything noted below is optional
+  course_selection_page:
+    header: Choose Your Courses
+    save_button: Save Choices
+    

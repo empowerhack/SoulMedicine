@@ -65,3 +65,7 @@ en:
     header: Register Your Account
     general_information_header: General Information
     general_information: The information gathered in this form is not shared with any external entity. Aside from a few fields, everything noted below is optional
+  course_selection_page:
+    header: Choose Your Courses
+    save_button: Save Choices
+    
