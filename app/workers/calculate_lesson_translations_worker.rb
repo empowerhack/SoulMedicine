@@ -11,7 +11,7 @@ class CalculateLessonTranslationsWorker
             if primary.present?
                 url = ENV["BASE_URL"]
                 message = "Here is your lesson for the day! \n "
-                message << primary.translation.truncate(100)
+                message << ActionView::Base.full_sanitizer.sanitize( primary.translation.truncate(100) )
                 message << "\n The full lesson details can be found here: #{url}lesson/#{lesson.id}"
                 send_with_twilio("+#{user.country.dial_code}#{user.mobile_number}", message)
             end
