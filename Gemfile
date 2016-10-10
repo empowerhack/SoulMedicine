@@ -29,6 +29,7 @@ gem 'ckeditor'
 gem 'sidekiq'
 # gem 'sidetiq'
 gem 'sinatra', :require => false
+gem 'cookies_eu'
 #### End of SoulMedicine specific gems ####
 
 

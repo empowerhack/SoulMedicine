@@ -23,6 +23,7 @@
         </div>
       <% end %>
       <%= content_for?(:breadcrumbs) ? yield(:breadcrumbs) + yield : yield %>
+      <%= render 'cookies_eu/consent_banner' %>
       <%= yield :after_body %>
     </div>
 
