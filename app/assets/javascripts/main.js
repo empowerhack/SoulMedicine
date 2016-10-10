@@ -20,3 +20,4 @@ var ready = function() {
 
 $(document).ready(function () { console.log('Page Ready'); ready(); });
 $(document).on('page:change', function () { console.log('Page Changed'); ready(); });
+$(document).on('page:update', function () { console.log('Page Updated'); ready(); });
