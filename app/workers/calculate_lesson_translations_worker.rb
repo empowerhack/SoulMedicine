@@ -12,7 +12,7 @@ class CalculateLessonTranslationsWorker
                 url = ENV["BASE_URL"]
                 message = "Here is your lesson for the day! \n "
                 message << ActionView::Base.full_sanitizer.sanitize( primary.translation.truncate(100) )
-                message << "\n The full lesson details can be found here: #{url}lesson/#{lesson.id}"
+                message << "\n For translations, click: #{url}lesson/#{lesson.id}"
                 send_with_twilio("+#{user.country.dial_code}#{user.mobile_number}", message)
             end
             lesson_completion = LessonCompletion.create!(lesson_id: lesson_id, user_id: user_id, subject_matter_id: lesson.subject_matter.id, course_id: lesson.course.id )
