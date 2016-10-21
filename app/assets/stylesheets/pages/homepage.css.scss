@@ -1,24 +1,31 @@
+/* The whole page */
 .masthead {
     &.segment {
         min-height: 950px;
         padding: 1em 0em;
     }
+    
+/* This is the main section of the page with the logo */
     h1.ui.header {
         margin-top: 2em;
         margin-bottom: 0em;
         font-size: 4em;
         font-weight: normal;
+        font-family: selina;
     }
 }
 
+/* Menu items */
 #computer-menu {
     padding-bottom: 2rem;
 }
 
+/* The 'main' HTML section */
 #soulmedicine-home-masthead {
     background-color: #FFDCD2;
 }
 
+/* The sign up form on the homepage */
 #sign-up-form {
     padding-top: 150px;
     padding-bottom: 150px;
