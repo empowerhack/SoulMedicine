@@ -1,0 +1,57 @@
+@charset "utf-8";
+@import 'semantic-ui';
+
+.masthead {
+    &.segment {
+        min-height: 950px;
+        padding: 1em 0em;
+    }
+    h1.ui.header {
+        margin-top: 3em;
+        margin-bottom: 0em;
+        font-size: 4em;
+        font-weight: normal;
+    }
+}
+
+#computer-menu {
+    padding-bottom: 2rem;
+}
+
+#soulmedicine-home-masthead {
+    background-color: #18DCB5;
+}
+
+#sign-up-form {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+
+.pusher {
+    min-height: 100vh;
+}
+
+.large.text {
+   font-size: 1.6rem;
+}
+
+.ui {
+    .mobile-menu {
+        margin-top: 1rem !important;
+    }
+    &.content > .segment {
+        &:last-child {
+            margin-bottom: 2em;
+        }
+
+        &:first-child {
+            margin-top: 2em;
+        }
+        
+        > .section-text {
+            font-size: larger;
+            margin: auto auto auto 1em;
+        }
+    }
+}

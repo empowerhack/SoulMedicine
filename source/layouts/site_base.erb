@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= current_page.data.title || "Soul Medicine" %></title>
+
+    <%= stylesheet_link_tag    "style" %>
+    <%= javascript_include_tag "app" %>
+    <%= yield_content :head %>
+  </head>
+
+  <body class="">
+    <%= partial "layouts/navbar" %>
+    <div class="pusher">
+      <%#content_for?(:breadcrumbs) ? yield(:breadcrumbs) + yield : yield #%>
+      <%= yield %>
+    </div>
+
+    <%= yield_content :after_body %>
+
+  </body>
+</html>
